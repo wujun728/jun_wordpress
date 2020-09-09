@@ -1,0 +1,67 @@
+<% layout('/layouts/form.html', {title: '栏目编辑', formId: 'messageTemplateForm', bodyClass: 'white-bg', libs: 'summernote'}){ %>
+<#form:form id="messageTemplateForm" modelAttribute="data"  method="post" class="form-horizontal">
+	<#form:hidden path="id"/>
+	<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		<tbody>
+			<tr>
+				<td  style="width: 10%" class="active text-right">
+					<label><font color="red">*</font>产品名称:</label>
+				</td>
+				<td class="width-35" colspan="3">
+					<#form:input path="name" class="form-control " datatype="*" nullmsg="请输入产品名称！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+			</tr>
+			<tr>
+				<td  style="width: 10%" class="active text-right">
+					<label><font color="red">*</font>产品描述:</label>
+				</td>
+				<td class="width-35" colspan="3">
+					<#form:textarea path="description" class="form-control " datatype="*" nullmsg="请输入产品描述！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+			</tr>
+			<tr>
+				<td  class="active text-right">
+					<label><font color="red">*</font>产品版本:</label>
+				</td>
+				<td class="width-35" >
+					<#form:select path="version" dict="productVersion" class="form-control " datatype="*" nullmsg="请输入产品版本！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+				<td class="active">
+					<label class="pull-right"><font color="red">*</font>授权期限:</label>
+				</td>
+				<td >
+					<#form:select path="authorizationPeriod" dict="authorizationPeriod" class="form-control " datatype="*" nullmsg="请输入授权期限！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+			</tr>
+			<tr>
+				<td  class="active text-right">
+					<label><font color="red">*</font>应付金额:</label>
+				</td>
+				<td class="width-35" >
+					<#form:input path="totalAmount" class="form-control " datatype="*" nullmsg="请输入模版标题！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+				<td class="active">
+					<label class="pull-right"><font color="red">*</font>折扣金额:</label>
+				</td>
+				<td >
+					<#form:input path="discountAmount" class="form-control " datatype="*" nullmsg="请输入模版标题！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+			</tr>
+			<tr>
+				<td class="active">
+					<label class="pull-right"><font color="red">*</font>折扣描述:</label>
+				</td>
+				<td style="height: 300px" colspan="3">
+					<#form:editor editorType="summernote"  height="300px" path="discountDescription"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</#form:form>
+<% } %>

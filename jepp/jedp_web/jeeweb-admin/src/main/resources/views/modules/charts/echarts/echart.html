@@ -1,0 +1,27 @@
+<% layout('/layouts/single.html', {title: charttitle, libs: 'echarts'}){ %>
+<style>
+    /* ECHARTS  */
+    .echarts {
+        height: 400px;
+    }
+</style>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="portlet box  portlet-grey">
+                <div class="portlet-header">
+                    <div class="caption">${charttitle}</div>
+                    <div class="tools">
+                        <i class="fa fa-chevron-up"></i>
+                        <i class="fa fa-refresh"></i><i class="fa fa-times"></i>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="echarts" id="echarts-${charttype}-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${staticPath}/modules/charts/js/echarts/${charttype}.js"></script>
+<% } %>

@@ -1,0 +1,15 @@
+<li data-id="${example.id}">
+    <a class="fly-case-img" href="${example.link}" target="_blank" >
+        <img src="${example.cover}" alt="${example.title}">
+        <cite class="layui-btn layui-btn-primary layui-btn-small">去围观</cite>
+    </a>
+    <h2><a href="${example.link}" target="_blank">${example.title}</a></h2>
+    <p class="fly-case-desc">${example.description}</p>
+    <div class="fly-case-info">
+        <a href="${ctx}/user/home/${example.user.id}" class="fly-case-user" target="_blank"><img src="${example.user.portrait}"></a>
+        <p class="layui-elip" style="font-size: 12px;"><span style="color: #666;">${example.user.realname}</span> <% var reportDate = @DateUtils.convertTimeToFormat(example.reportDate);%>${reportDate}</p>
+        <p>获得<a class="fly-case-nums fly-case-active" href="javascript:;" data-type="showPraise" style=" padding:0 5px; color: #01AAED;">${example.praiseCount}</a>个赞</p>
+        <% if(example.praise == 0){%><button class="layui-btn layui-btn-primary fly-case-active" data-type="praise">点赞</button><%}%>
+        <% if(example.praise == 1){%><button class="layui-btn  fly-case-active" data-type="praise">已赞</button><%}%>
+    </div>
+</li>

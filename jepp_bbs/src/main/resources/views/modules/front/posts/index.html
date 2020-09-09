@@ -1,0 +1,82 @@
+<% layout('../layouts/layout.html', {
+title: 'JeeWeb敏捷开发平台|Jeeweb 官网 一个集成了代码生成器的JAVA WEB开源框架',
+page: '',
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8">
+      <div class="fly-panel">
+        <div class="fly-panel-title fly-filter">
+          <a>置顶</a>
+          <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right" id="LAY_goSignin" style="color: #FF5722;">去签到</a>
+        </div>
+        <ul class="fly-list">
+          <% for (posts in topPostsList) {
+          var test = postsUtils.getPostsColumnByCode(posts.column);
+          %>
+          <%include("./posts-li.html",{posts: posts}){}%>
+          <%}%>
+        </ul>
+      </div>
+
+      <div class="fly-panel" style="margin-bottom: 0;">
+
+        <div class="fly-panel-title fly-filter">
+          <a href="${ctx}/posts/all" class="layui-this">综合</a>
+          <span class="fly-mid"></span>
+          <a href="${ctx}/posts/all/unsolved">未结</a>
+          <span class="fly-mid"></span>
+          <a href="${ctx}/posts/all/solved">已结</a>
+          <span class="fly-mid"></span>
+          <a href="${ctx}/posts/all/wonderful">精华</a>
+          <span class="fly-filter-right layui-hide-xs">
+              <a href="${ctx}/posts/all?orderBy=publish" class="layui-this">按最新</a>
+              <span class="fly-mid"></span>
+              <a href="${ctx}/posts/all?orderBy=comment">按热议</a>
+            </span>
+        </div>
+
+        <ul class="fly-list">
+          <% for (posts in postsList) {%>
+          <% include("./posts-li.html",{posts: posts}){}%>
+          <%}%>
+        </ul>
+        <div style="text-align: center">
+          <div class="laypage-main">
+            <a href="${ctx}/posts/all" class="laypage-next">更多求解</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="layui-col-md4">
+
+      <!--温馨提示-->
+      <%include("../common/widget/tips.html"){}%>
+      <!--签到提示-->
+      <%include("../common/widget/signin.html"){}%>
+      <!--回帖周榜-->
+      <%include("../common/widget/comment-week-top.html",{pageSize: 16}){}%>
+      <!--本周热议-->
+      <%include("../common/widget/posts-week-top.html",{column:'',pageSize: 16}){}%>
+
+      <!--广告-->
+      <%include("../common/widget/ad.html"){}%>
+      <!--友情链接-->
+      <%include("../common/widget/friend-link.html"){}%>
+
+    </div>
+  </div>
+</div>
+<% } %>
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'  //这里实际使用时，建议改成绝对路径
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

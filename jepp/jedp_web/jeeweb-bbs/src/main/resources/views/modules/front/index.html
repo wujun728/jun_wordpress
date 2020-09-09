@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JeeWeb敏捷开发平台|JeeWeb 官网 一个集成了代码生成器的JAVA WEB开源框架-JeeWeb社区</title>
+  <meta name="keywords" content="layui,ui,ui框架,前端框架,JS组件">
+  <meta name="description" content="JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="${staticPath}/layui/css/layui.css">
+  <link rel="stylesheet" href="${staticPath}/css/index.css">
+ </head>
+<body class="site-home" id="LAY_home" style="background-color: #eee;" data-date="9-4">
+
+<div class="layui-header header header-index" autumn>
+  <div class="layui-main">
+    <a class="logo" href="/">
+      <img src="${staticPath}/images/logo-index.png" alt="layui">
+    </a>
+    <div style="display: none" class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item ">
+        <a href="http://doc.jeeweb.cn/"  target="_blank">文档<!-- <span class="layui-badge-dot"></span> --></a>
+      </li>
+      <li class="layui-nav-item ">
+        <a href="${ctx}/example">案例<!-- <span class="layui-badge-dot"></span> --></a>
+      </li>
+      <li class="layui-nav-item ">
+        <!--<span class="layui-badge-dot" style="margin: -4px 3px 0;"></span>-->
+        <a href="javascript:;">示例</a>
+        <dl class="layui-nav-child">
+          <dd class="layui-show-xs"><a href="https://demo.jeeweb.cn/" target="_blank">常规版</a><hr></dd>
+          <dd class="layui-show-xs"><a href="http://vuedemo.jeeweb.cn/" target="_blank">前后端分离版</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item" style="display: none;">
+        <!--<span class="layui-badge-dot" style="margin: -4px 3px 0;"></span>-->
+        <a href="javascript:;">示例</a>
+        <dl class="layui-nav-child">
+
+          <dd class="layui-show-xs"><a href="https://demo.jeeweb.cn/">常规版</a></dd>
+          <dd class="layui-show-xs"><a href="http://vuedemo.jeeweb.cn/" target="_blank">前后端分离版</a><hr></dd>
+
+          <dd><a href="//layim.layui.com/" target="_blank">即时聊天</a></dd>
+
+          <hr>
+          <dd><a href="/admin/" target="_blank">后台模板</a></dd>
+          <dd><a href="/template/fly/" target="_blank">社区模板</a></dd>
+          <dd><a href="/template/xianyan/" target="_blank">轻博客模板<span class="layui-badge-dot"></span></a></dd>
+
+          <hr>
+          <dd><a href="/alone.html" target="_blank">独立组件</a></dd>
+          <dd><a href="${ctx}/posts/jie/24209/" target="_blank">Axure组件</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item layui-hide-xs" style="display: none">
+        <a href="${ctx}/posts/extend/">扩展<span class="layui-badge-dot"></span></a>
+      </li>
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="${ctx}/posts/" target="_blank">社区</a>
+      </li>
+
+      <li class="layui-nav-item layui-hide-xs" lay-unselect  style="display: none">
+        <a href="/admin/">后台模板<span class="layui-badge-dot"></span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<div class="site-banner">
+  <div class="site-banner-bg" style="background-image: url(${staticPath}/images/autumn.jpg?v=0); background-size: cover;">
+  </div>
+  <div class="site-banner-main">
+    <div class="site-zfj">
+      <i class="layui-icon" style="color: #fff; color: rgba(255,255,255,.7);">&#xe609;</i>
+    </div>
+    <div class="layui-anim site-desc">
+      <p class="web-font-desc">JeeWeb敏捷开发平台</p>
+      <cite style="display: none">由职业前端倾情打造，面向所有层次的前后端开发者，零门槛开箱即用的前端UI解决方案</cite>
+    </div>
+    <div class="site-download">
+      <a href="https://gitee.com/dataact/jeeweb" class="layui-inline site-down" target="_blank">
+        <cite class="layui-icon">&#xe601;</cite>
+        立即下载
+      </a>
+    </div>
+    <div class="site-banner-other">
+      <a href='https://gitee.com/dataact/jeeweb/stargazers'><img src='https://gitee.com/dataact/jeeweb/badge/star.svg?theme=dark' alt='star'></img></a>
+      <a href="https://gitee.com/dataact/jeeweb/members/" target="_blank" rel="nofollow" class="site-fork">
+        <i class="layui-icon">&#xe62e;</i>
+        Fork
+      </a>
+      <a style="display: none" href="https://gitee.com/dataact/jeeweb/" target="_blank" rel="nofollow" class="site-fork">
+        码云
+      </a>
+    </div>
+  </div>
+</div>
+<div class="layui-main">
+
+
+
+  <ul class="site-idea">
+    <li>
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>快速开发</legend>
+        <p>采用面向声明的开发模式，再配合在线代码生成器的使用，更加加快了开发的进度，将J2EE的开发效率成本提高，可以将代码减少60%以上。</p>
+      </fieldset>
+    </li>
+    <li>
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>丰富标签</legend>
+        <p>基于Beetl模版引擎，对前端UI进行标准封装表，页面统一采用UI标签实现功能，实现页面零JS，开发维护简洁高效</p>
+      </fieldset>
+    </li>
+    <li>
+      <fieldset class="layui-elem-field layui-field-title">
+        <legend>易于学习</legend>
+        <p>SpringBoot+Shiro+J2Cache+Disruptor+Jquery+ Boostrap+ Ztree等熟悉框架作为基础架构，大大节约开发学习时间。</p>
+      </fieldset>
+    </li>
+  </ul>
+
+</div>
+<div class="layui-footer footer footer-index">
+  <div class="layui-main">
+    <p>&copy; 2018 <a href="/">www.jeeweb.cn</a> Apache License</p>
+    <p style="display: none;">
+      <a href="http:${ctx}/posts/case/2018/" target="_blank">案例</a>
+      <a href="http:${ctx}/posts/jie/3147/" target="_blank">支持</a>
+      <a href="javascript:;" site-event="contactInfo">联系</a>
+      <a href="https://github.com/sentsin/layui/" target="_blank" rel="nofollow">GitHub</a>
+      <a href="https://gitee.com/sentsin/layui" target="_blank" rel="nofollow">码云</a>
+      <a href="http:${ctx}/posts/jie/2461/" target="_blank">微信公众号</a>
+      <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+  </div>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="${staticPath}/layui/layui.js"></script>
+<script>
+    window.global = {
+        pageType: 'index'
+        ,preview: function(){
+            var preview = document.getElementById('LAY_preview');
+            return preview ? preview.innerHTML : '';
+        }()
+    };
+    layui.config({
+        base: '${staticPath}/mods/'
+        ,version: "3.0.0"
+    }).use('global');
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?efb9a8c5d5e8c9815698fe1520817116";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

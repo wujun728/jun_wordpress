@@ -1,0 +1,74 @@
+<% layout('../layouts/layout.html', {
+title: '登入',
+page: 'user',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop fly-user-main">
+  <% include("../common/user-nav.html"){}%>
+  <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon"></i>
+  </div>
+  <div class="site-mobile-shade"></div>
+  <div class="fly-panel fly-panel-user" pad20="" style="padding-top:20px;">
+    <div class="fly-msg" style="margin-bottom: 20px;">
+      您的邮箱尚未验证，这比较影响您的帐号安全，
+      <a href="/user/activate/">立即去激活？</a>
+    </div>
+    <div class="layui-row layui-col-space20">
+      <div class="layui-col-md6">
+        <!--签到提示-->
+        <%include("../common/widget/signin.html"){}%>
+      </div>
+      <div class="layui-col-md6">
+        <div class="fly-panel fly-panel-border">
+          <div class="fly-panel-title">
+            我的会员信息
+          </div>
+          <div class="fly-panel-main layui-text" style="padding: 18px 15px; height: 50px; line-height: 26px;">
+            <p>您的财富经验值：<i class="iconfont icon-kiss" title="飞吻"></i><span style="color: #FF7200;">${showUser.experience}</span></p>
+            <% if(showUser.vipLevel != '' && showUser.vipLevel != '0'){%>
+            <p>您当前为：<i class="layui-badge fly-badge-vip">VIP${showUser.vipLevel}</i></p>
+            <%}else{%>
+            <p>您当前为：非 VIP</p>
+            <%}%>
+          </div>
+        </div>
+      </div>
+      <div class="layui-col-md12" style="margin-top: -20px;">
+        <div class="fly-panel fly-panel-border">
+          <div class="fly-panel-title">
+            快捷方式
+          </div>
+          <div class="fly-panel-main">
+            <ul class="layui-row layui-col-space10 fly-shortcut">
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/user/set/"><i class="layui-icon"></i><cite>修改信息</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/user/set/#avatar"><i class="layui-icon"></i><cite>修改头像</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/user/set/#pass"><i class="layui-icon"></i><cite>修改密码</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/user/set/#bind"><i class="layui-icon"></i><cite>帐号绑定</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/posts/create/"><i class="layui-icon"></i><cite>发表新帖</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/posts/share/"><i class="layui-icon"></i><cite>查看分享</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4 LAY_search"> <a href="javascript:;"><i class="layui-icon"></i><cite>搜索资源</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="${ctx}/user/posts/#collection"><i class="layui-icon"></i><cite>我的收藏</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="#"><i class="layui-icon"></i><cite>成为赞助商</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="#"><i class="layui-icon"></i><cite>关注公众号</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="#"><i class="layui-icon"></i><cite>文档</cite></a> </li>
+              <li class="layui-col-sm3 layui-col-xs4"> <a href="#"><i class="layui-icon"></i><cite>示例</cite></a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

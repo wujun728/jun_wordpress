@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jeeweb.bbs.modules.sign.mapper.SignInMapper" >
+
+
+    <select id="countToDaySign" resultType="java.lang.Integer">
+        select count(*) from sign_in where
+        <if test="userId != '' and userId != null">
+            sign_uid = #{userId} and
+        </if>
+        to_days(sign_time) = to_days(now())
+    </select>
+
+    <select id="countYesterdaySign" resultType="java.lang.Integer">
+        SELECT count(*) FROM sign_in WHERE
+        <if test="userId != '' and userId != null">
+            sign_uid = #{userId} and
+        </if>
+        to_days(now()) - to_days(sign_time) <![CDATA[ <= ]]> 1
+    </select>
+
+    <sql id="Base_Column_List" >
+        si.id,
+        si.sign_uid as signUid,
+        si.sign_time as signTime,
+        si.experience,
+        u.id as "user.id",
+        u.realname as "user.realname",
+        u.username as "user.username",
+        u.portrait as "user.portrait",
+        u.email as "user.email",
+        u.phone as "user.phone",
+        u.vip_level as "user.vipLevel",
+        u.auth as "user.auth",
+        u.auth_info as "user.authInfo",
+        u.status as "user.status"
+    </sql>
+
+
+    <select id="selectToDaySignList" resultType="cn.jeeweb.bbs.modules.sign.entity.SignIn">
+        select
+        <include refid="Base_Column_List" />
+        from sign_in si
+        LEFT JOIN sys_user u on si.sign_uid=u.id
+        where to_days(si.sign_time) = to_days(now())
+        ORDER BY sign_time desc
+    </select>
+
+    <select id="selectLatestSignList" resultType="cn.jeeweb.bbs.modules.sign.entity.SignIn">
+        select
+        <include refid="Base_Column_List" />
+        from sign_in si
+        LEFT JOIN sys_user u on si.sign_uid=u.id
+        ORDER BY sign_time desc
+    </select>
+</mapper>

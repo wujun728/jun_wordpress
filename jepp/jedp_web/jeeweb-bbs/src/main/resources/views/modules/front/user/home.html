@@ -1,0 +1,112 @@
+<% layout('../layouts/layout.html', {
+title: showUser.realname + '主页',
+page: 'user',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="fly-home fly-panel" style="background-image: url();">
+  <img src="${showUser.portrait}" alt="${showUser.realname}">
+  <% if(showUser.auth != '' && showUser.auth == '1'){%>
+  <i class="iconfont icon-renzheng" title="认证信息：${showUser.authInfo}"></i>
+  <%}%>
+  <h1>
+    ${showUser.realname}
+    <% if(showUser.sex == '1'){%>
+    <i class="iconfont icon-nan"></i>
+    <%}else{%>
+    <i class="iconfont icon-nv"></i>
+    <%}%>
+    <% if(showUser.vipLevel != '' && showUser.vipLevel != '0'){%>
+    <i class="layui-badge fly-badge-vip">VIP${showUser.vipLevel}</i>
+    <%}%>
+    <!--
+    <span style="color:#c00;">（管理员）</span>
+    <span style="color:#5FB878;">（社区之光）</span>
+    <span>（该号已被封）</span>
+    -->
+  </h1>
+  <% if(showUser.auth != '' && showUser.auth == '1'){%>
+  <p style="padding: 10px 0; color: #5FB878;">认证信息：${showUser.authInfo}</p>
+  <%}%>
+
+
+  <p class="fly-home-info">
+    <i class="iconfont icon-kiss" title="飞吻"></i><span style="color: #FF7200;">${showUser.experience} 飞吻</span>
+    <i class="iconfont icon-shijian"></i><span><% var joinTime = @DateUtils.convertTimeToFormat(showUser.createDate);%>${joinTime}加入</span>
+    <i class="iconfont icon-chengshi"></i><span>来自${showUser.city}</span>
+  </p>
+
+  <p class="fly-home-sign">（${showUser.signature} ）</p>
+
+  <div class="fly-sns" data-user="" style="display: none">
+    <a href="javascript:;" class="layui-btn layui-btn-primary fly-imActive" data-type="addFriend">加为好友</a>
+    <a href="javascript:;" class="layui-btn layui-btn-normal fly-imActive" data-type="chat">发起会话</a>
+  </div>
+
+</div>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md6 fly-home-jie">
+      <div class="fly-panel">
+        <h3 class="fly-panel-title">${showUser.realname} 最近的提问</h3>
+        <ul class="jie-row">
+          <% for (posts in postsPageBean.records) {%>
+          <li>
+            <% if(posts.essence == 1){%><span class="fly-jing">精</span><%}%>
+            <a href="${ctx}/posts/${posts.id}/detail" class="jie-title">${posts.title}</a>
+            <i><% var publishTime = @DateUtils.convertTimeToFormat(posts.publishTime);%>${publishTime}</i>
+            <em class="layui-hide-xs">${posts.readCount}阅/${posts.commentCount}答</em>
+          </li>
+          <%}%>
+          <% if (postsPageBean.total == 0) {%>
+          <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">没有发表任何求解</i></div>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+
+    <div class="layui-col-md6 fly-home-da">
+      <div class="fly-panel">
+        <h3 class="fly-panel-title">${showUser.realname} 最近的回答</h3>
+        <ul class="home-jieda">
+          <% for (comment in commentPageBean.records) {%>
+          <li>
+            <p>
+              <span><% var publishTime = @DateUtils.convertTimeToFormat(comment.publishTime);%>${publishTime}</span>
+              在<a href="${ctx}/posts/${comment.posts.id}/detail" target="_blank">${comment.posts.title}?</a>中回答：
+            </p>
+            <div class="home-dacontent">
+              ${comment.content}
+            </div>
+          </li>
+          <%}%>
+          <% if (commentPageBean.total == 0) {%>
+          <!-- 无数据时 -->
+          <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><span>没有回答任何问题</span></div>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
+
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use(['fly', 'face'], function(){
+      var $ = layui.$
+          ,fly = layui.fly;
+      //如果你是采用模版自带的编辑器，你需要开启以下语句来解析。
+      $('.home-dacontent').each(function(){
+          var othis = $(this), html = othis.html();
+          othis.html(fly.content(html));
+      });
+    });
+</script>

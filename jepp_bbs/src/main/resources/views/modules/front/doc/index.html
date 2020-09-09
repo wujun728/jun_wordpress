@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui开发使用文档 - 入门指南</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="${staticPath}/layui/css/layui.css">
+    <link rel="stylesheet" href="${staticPath}/css/index.css">
+</head>
+<body>
+
+<div class="layui-header header header-doc" autumn>
+    <div class="layui-main">
+        <a class="logo" href="/">
+            <img src="//res.layui.com/static/images/layui/logo.png" alt="layui">
+        </a>
+        <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-this">
+                <a href="/doc/">文档<!--  --></a>
+            </li>
+            <li class="layui-nav-item ">
+                <a href="/demo/">示例<!-- <span class="layui-badge-dot"></span> --></a>
+            </li>
+
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="//fly.layui.com/extend/">扩展<span class="layui-badge-dot"></span></a>
+            </li>
+
+
+
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="//fly.layui.com/" target="_blank">社区</a>
+            </li>
+
+            <li class="layui-nav-item">
+                <!--<span class="layui-badge-dot" style="margin: -4px 3px 0;"></span>-->
+                <a href="javascript:;">周边</a>
+                <dl class="layui-nav-child">
+
+                    <dd class="layui-hide-sm layui-show-xs"><a href="//fly.layui.com/extend/">扩展组件</a></dd>
+                    <dd class="layui-hide-sm layui-show-xs"><a href="//fly.layui.com/" target="_blank">社区交流</a><hr></dd>
+
+                    <dd><a href="//layim.layui.com/" target="_blank">即时聊天</a></dd>
+
+                    <hr>
+                    <dd><a href="/admin/" target="_blank">后台模板</a></dd>
+                    <dd><a href="/template/fly/" target="_blank">社区模板</a></dd>
+                    <dd><a href="/template/xianyan/" target="_blank">轻博客模板<span class="layui-badge-dot"></span></a></dd>
+
+                    <hr>
+                    <dd><a href="/alone.html" target="_blank">独立组件</a></dd>
+                    <dd><a href="//fly.layui.com/jie/24209/" target="_blank">Axure组件</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a href="/admin/">后台模板<span class="layui-badge-dot"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<ul class="site-dir">
+    <li><a href="#get"><cite>获得 layui</cite></a></li>
+    <li><a href="#quickstart"><cite>快速上手</cite></a></li>
+    <li><a href="#classical"><cite>经典，因返璞归真</cite></a></li>
+    <li><a href="#modules"><cite>模块化用法</cite></a></li>
+    <li><a href="#nonmodules"><cite>非模块化用法</cite></a></li>
+</ul>
+<div class="layui-main site-inline">
+    <div class="site-tree">
+        <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+            <select lay-filter="tabVersion">
+                <option value="new">2.x</option>
+                <option value="v1">1.0.9</option>
+            </select>
+        </div>
+        <ul class="layui-tree">
+            <li><h2>基础说明</h2></li>
+
+            <li class="site-tree-noicon layui-this">
+                <a href="/doc/">
+                    <cite>开始使用</cite>
+                    <em>Getting Started</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/base/infrastructure.html">
+                    <cite>底层方法</cite>
+                    <em>基础支撑</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/base/element.html">
+                    <cite>页面元素</cite>
+                    <em>规范 / 公共类 / 属性</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/base/modules.html">
+                    <cite>模块规范</cite>
+                    <em>使用 / 扩展</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/base/faq.html">
+                    <cite>常见问题</cite>
+                    <em>FAQ</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/base/changelog.html">
+                    <cite>更新日志</cite>
+
+                    <span class="layui-badge-dot" style="position: relative; top: -3px; left: -3px;"></span>
+
+                </a>
+            </li>
+
+            <li><h2>页面元素</h2></li>
+
+
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/layout.html">
+                    <cite>布局</cite>
+                    <em>栅格 / 后台布局</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/color.html">
+                    <cite>颜色</cite>
+                    <em>主题色设计感 / 内置背景色</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/icon.html">
+                    <cite>图标</cite>
+                    <em>字体图标</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/anim.html">
+                    <cite>动画</cite>
+                    <em>内置的CSS3动画类</em>
+                </a>
+            </li>
+
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/button.html">
+                    <cite>按钮</cite>
+                    <em>button组</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/form.html">
+                    <cite>表单</cite>
+                    <em>form元素集合</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/nav.html">
+                    <cite>导航</cite>
+                    <em>菜单 / 面包屑</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/tab.html">
+                    <cite>选项卡</cite>
+                    <em>Tabs 切换</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/progress.html">
+                    <cite>进度条</cite>
+                    <em>progress</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/panel.html">
+                    <cite>面板</cite>
+                    <em>折叠 / 手风琴</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/table.html">
+                    <cite>表格</cite>
+                    <em>静态table</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/badge.html">
+                    <cite>徽章</cite>
+                    <em>小圆点 / 小边框</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/timeline.html">
+                    <cite>时间线</cite>
+                    <em>timeline</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/element/auxiliar.html">
+                    <cite>辅助</cite>
+                    <em>引用 / 字段集 / 横线等</em>
+                </a>
+            </li>
+
+
+            <li><h2>内置模块</h2></li>
+
+            <li class="">
+                <a href="/doc/modules/layer.html">
+                    <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+                    <em>layer</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/laydate.html">
+                    <i class="layui-icon" style="top: 1px;">&#xe637;</i><cite>日期与时间选择</cite>
+                    <em>laydate</em>
+                </a>
+            </li>
+            <li >
+                <a href="/doc/modules/layim.html">
+                    <i class="layui-icon" style="position: relative; top: 3px;">&#xe63a;</i>
+                    <cite>即时通讯</cite>
+                    <em>layim</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/laypage.html">
+                    <i class="layui-icon">&#xe633;</i><cite>分页</cite>
+                    <em>laypage</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/laytpl.html">
+                    <i class="layui-icon">&#xe628;</i><cite>模板引擎</cite>
+                    <em>laytpl</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/table.html">
+                    <i class="layui-icon">&#xe62d;</i>
+                    <cite>数据表格</cite>
+
+                    <span class="layui-badge-dot" style="position: relative; top: -3px; left: -3px;"></span>
+
+                    <em>table</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/form.html">
+                    <i class="layui-icon" style="top: 2px;">&#xe63c;</i>
+                    <cite>表单</cite>
+                    <em>form</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/upload.html">
+                    <i class="layui-icon" style="font-size: 18px;">&#xe62f;</i>
+                    <cite>文件上传</cite>
+                    <em>upload</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/element.html">
+                    <i class="layui-icon" style="top: 1px; font-size: 18px;">&#xe62a;</i>
+                    <cite>常用元素操作</cite>
+                    <em>element</em>
+                </a>
+            </li>
+
+
+            <li class="">
+                <a href="/doc/modules/colorpicker.html">
+                    <i class="layui-icon layui-icon-theme" style="top: 1px; font-size: 18px;"></i>
+                    <cite>颜色选择器</cite>
+
+                    <span class="layui-badge-dot" style="position: relative; top: -3px; left: -3px;"></span>
+
+                    <em>colorpicker</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/slider.html">
+                    <i class="layui-icon layui-icon-slider" style="top: 1px; font-size: 18px;"></i>
+                    <cite>滑块</cite>
+
+                    <span class="layui-badge-dot" style="position: relative; top: -3px; left: -3px;"></span>
+
+                    <em>slider</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/rate.html">
+                    <i class="layui-icon" style="top: 1px; font-size: 22px;">&#xe67b;</i>
+                    <cite>评分</cite>
+                    <em>rate</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/carousel.html">
+                    <i class="layui-icon" style="top: 2px;">&#xe634;</i>
+                    <cite>轮播</cite>
+                    <em>carousel</em>
+                </a>
+            </li>
+
+            <li class="">
+                <a href="/doc/modules/flow.html">
+                    <i class="layui-icon">&#xe636;</i>
+                    <cite>流加载</cite>
+                    <em>flow</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/util.html">
+                    <i class="layui-icon">&#xe631;</i>
+                    <cite>工具集</cite>
+                    <em>util</em>
+                </a>
+            </li>
+            <li class="">
+                <a href="/doc/modules/code.html">
+                    <i class="layui-icon" style="top: 1px;">&#xe635;</i>
+                    <cite>代码修饰器</cite>
+                    <em>code</em>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="site-content">
+         <pre class="layui-code">
+        <#body:escape htmlEscape="true">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>开始使用layui</title>
+<link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<!-- 你的HTML代码 -->
+<script src="../layui/layui.js"></script>
+<script>
+//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+var layer = layui.layer
+,form = layui.form;
+layer.msg('Hello World');
+});
+</script>
+</body>
+</html>
+        </#body:escape>
+         </pre>
+        <h1 class="site-h1">开始使用 - 入门指南</h1>
+        <blockquote class="layui-elem-quote">
+            layui（谐音：类UI) 是一款采用自身模块规范编写的前端 UI 框架，遵循原生 HTML/CSS/JS 的书写与组织形式，门槛极低，拿来即用。其外在极简，却又不失饱满的内在，体积轻盈，组件丰盈，从核心代码到 API 的每一处细节都经过精心雕琢，非常适合界面的快速开发。layui  首个版本发布于2016年金秋，她区别于那些基于 MVVM 底层的 UI 框架，却并非逆道而行，而是信奉返璞归真之道。准确地说，她更多是为服务端程序员量身定做，你无需涉足各种前端工具的复杂配置，只需面对浏览器本身，让一切你所需要的元素与交互，从这里信手拈来。
+        </blockquote>
+        <p style="margin-bottom: 20px; text-align: center">
+            <img src="//res.layui.com/static/images/layui/logo-2.png" style="width: 100%; max-width: 360px;">
+        </p>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="compatibility">兼容性和面向场景</a></legend>
+        </fieldset>
+
+        <blockquote class="layui-elem-quote" style="text-align: center;">
+            layui 兼容人类正在使用的全部浏览器（IE6/7除外），可作为 PC 端后台系统与前台界面的速成开发方案。
+        </blockquote>
+
+
+
+        <div style="margin: 15px 0; text-align: center; background-color: #F2F2F2;">
+            <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833"></ins>
+        </div>
+
+
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="get">获得 layui</a></legend>
+        </fieldset>
+        <div class="site-text">
+            <p>1. 官网首页下载</p>
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                你可以在我们的 <a href="http://www.layui.com/">官网首页</a> 下载到 layui 的最新版，它经过了自动化构建，更适合用于生产环境。目录结构如下：
+            </blockquote>
+            <pre class="layui-code">
+  ├─css //css目录
+  │  │─modules //模块css目录（一般如果模块相对较大，我们会单独提取，比如下面三个：）
+  │  │  ├─laydate
+  │  │  ├─layer
+  │  │  └─layim
+  │  └─layui.css //核心样式文件
+  ├─font  //字体图标目录
+  ├─images //图片资源目录（目前只有layim和编辑器用到的GIF表情）
+  │─lay //模块核心目录
+  │  └─modules //各模块组件
+  │─layui.js //基础核心库
+  └─layui.all.js //包含layui.js和所有模块的合并文件
+     </pre>
+            <p>2. Git 仓库下载</p>
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                你也可以通过 <a href="https://github.com/sentsin/layui/" target="_blank">GitHub</a> 或 <a href="https://gitee.com/sentsin/layui" target="_blank">码云</a> 得到 layui 的完整开发包，以便于你进行二次开发，或者 Fork layui 为我们贡献方案
+                <br><br>
+                <iframe src="//ghbtns.com/github-btn.html?user=sentsin&amp;repo=layui&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="156px" height="30px"></iframe>
+                <iframe src="//ghbtns.com/github-btn.html?user=sentsin&amp;repo=layui&amp;type=fork&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="156px" height="30px"></iframe>
+            </blockquote>
+            <p>3. npm 安装</p>
+            <pre class="layui-code" lay-skin="notepad">
+
+npm install layui-src
+      </pre>
+            <p>一般用于 WebPack 管理</p>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="quickstart">快速上手</a></legend>
+        </fieldset>
+        <div class="site-text">
+            <p>获得 layui 后，将其完整地部署到你的项目目录（或静态资源服务器），你只需要引入下述两个文件：</p>
+            <pre class="layui-code">
+./layui/css/layui.css
+./layui/layui.js //提示：如果是采用非模块化方式（最下面有讲解），此处可换成：./layui/layui.all.js
+      </pre>
+            <p>没错，不用去管其它任何文件。因为他们（比如各模块）都是在最终使用的时候才会自动加载。这是一个基本的入门页面：</p>
+            <pre class="layui-code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;
+  &lt;title>开始使用layui&lt;/title&gt;
+  &lt;link rel="stylesheet" href="../layui/css/layui.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 你的HTML代码 --&gt;
+
+&lt;script src="../layui/layui.js">&lt;/script&gt;
+&lt;script&gt;
+//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  var layer = layui.layer
+  ,form = layui.form;
+
+  layer.msg('Hello World');
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+            <p>如果你想采用非模块化方式（即所有模块一次性加载，尽管我们并不推荐你这么做），你也可以按照下面的方式使用：</p>
+            <pre class="layui-code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;
+  &lt;title>非模块化方式使用layui&lt;/title&gt;
+  &lt;link rel="stylesheet" href="../layui/css/layui.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 你的HTML代码 --&gt;
+
+&lt;script src="../layui/layui.all.js">&lt;/script&gt;
+&lt;script&gt;
+//由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+;!function(){
+  var layer = layui.layer
+  ,form = layui.form;
+
+  layer.msg('Hello World');
+}();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="classical">经典，因返璞归真</a></legend>
+        </fieldset>
+        <div class="site-text">
+            <p>layui 定义为“经典模块化”，并非是自吹她自身有多优秀，而是有意避开当下JS社区的主流方案，试图以最简单的方式去诠释高效！<em>她的所谓经典，是在于对返璞归真的执念</em>，她以当前浏览器普通认可的方式去组织模块！我们认为，这恰是符合当下国内绝大多数程序员从旧时代过渡到未来新标准的最佳指引。所以 layui 本身也并不是完全遵循于AMD时代，准确地说，她试图建立自己的模式，所以你会看到：</p>
+
+            <pre class="layui-code">
+//layui模块的定义
+layui.define([mods], function(exports){
+
+  //……
+
+  exports('mod', api);
+});
+
+//layui模块的使用
+layui.use(['mod1', 'mod2'], function(args){
+  var mod = layui.mod1;
+
+  //……
+
+});
+      </pre>
+            <p>没错，她具备AMD的影子，又并非受限于 CommonJS 的那些条条框框，layui认为这种轻量的组织方式，比WebPack更符合绝大多数场景。所以她坚持采用经典模块化，也正是能让人避开工具的复杂配置，回归简单，安静高效地编织原生态的HTML、CSS和JavaScript。</p>
+
+            <p>但是 layui 又并非是 Requirejs 那样的模块加载器，而是一款UI解决方案，她与Bootstrap最大的不同恰恰在于她糅合了自身对经典模块化的理解。</p>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="modules">模块化的用法（推荐）</a></legend>
+        </fieldset>
+        <div class="site-text">
+            <p>我们推荐你遵循 layui 的模块规范建立一个入口文件，并通过 layui.use() 方式来加载该入口文件，如下所示：</p>
+            <pre class="layui-code">
+&lt;script&gt;
+layui.config({
+  base: '/res/js/modules/' //你存放新模块的目录，注意，不是layui的模块目录
+}).use('index'); //加载入口
+&lt;/script&gt;
+    </pre>
+            上述的 index 即为你 /res/js/modules/ 目录下的 index.js，它的内容应该如下：
+            <pre class="layui-code">
+/**
+  项目JS主入口
+  以依赖layui的layer和form模块为例
+**/
+layui.define(['layer', 'form'], function(exports){
+  var layer = layui.layer
+  ,form = layui.form;
+
+  layer.msg('Hello World');
+
+  exports('index', {}); //注意，这里是模块输出的核心，模块名必须和use时的模块名一致
+});
+      </pre>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="nonmodules">非模块化用法</a></legend>
+        </fieldset>
+        <div class="site-text">
+            <p>如果你并不喜欢 layui 的模块化组织方式，你完全可以毅然采用“一次性加载”的方式，我们将 layui.js 及所有模块单独打包合并成了一个完整的js文件，用的时候直接引入这一个文件即可。当你采用这样的方式时，<span style="color: #FF5722;">你无需再通过 layui.use() 方法加载模块</span>，直接使用即可，如：</p>
+            <pre class="layui-code">
+&lt;script src="../layui/layui.all.js">&lt;/script>
+&lt;script>
+;!function(){
+  //无需再执行layui.use()方法加载模块，直接使用即可
+  var form = layui.form
+  ,layer = layui.layer;
+
+  //…
+}();
+&lt;/script>
+      </pre>
+            <p>但你必须知道，采用该方式，意味着 layui 的模块化已经失去了它的意义。但不可否认，它使用起来会更简单直接。</p>
+
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                也许通过上面的阅读，你已经大致了解如何使用 layui 了，但真正用于项目远不止如此，你需要继续阅读后面的文档，尤其是【基础说明】
+                <br>那么，从现在开始，尽情地拥抱 layui 吧！但愿她能成为你长远的开发伴侣，化作你方寸屏幕前的亿万字节！
+            </blockquote>
+        </div>
+
+        <blockquote class="layui-elem-quote layui-quote-nm">
+            <p>你好我哦哈哈哈安防</p>
+        </blockquote>
+        <p>你好<em>斯蒂芬</em>收到f</p>
+        <h4>字典接口：</h4>
+        <ul>
+            <li>字典接口</li>
+        </ul>
+        <h4>接口版本：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">版本号</th><th align="left">制定人</th><th align="left">制定日期</th><th>修订日期</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">1.0</td><td align="left">王存见</td><td align="left">2018-05-07</td><td>2018-05-07</td></tr>
+            </tbody>
+        </table>
+        <h4>请求URL:</h4>
+        <ul>
+            <li>http://{domain}/upms/dict</li>
+        </ul>
+        <h4>请求方式：</h4>
+        <ul>
+            <li>POST</li>
+        </ul>
+        <h4>请求头：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">是否必须</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">Content-Type</td><td align="left">是</td><td align="left">string</td><td>请求类型： x-www-form-urlencoded</td></tr>
+            </tbody>
+        </table>
+        <h4>请求参数:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">无</td><td align="left">无</td><td>无</td></tr>
+            </tbody>
+        </table>
+        <h4>返回示例:</h4>
+        <p><strong>正确时返回:</strong></p>
+        <pre><code>{
+  &quot;tabletype&quot;: [
+    {
+      &quot;label&quot;: &quot;单表&quot;,
+      &quot;value&quot;: &quot;1&quot;
+    },
+    {
+      &quot;label&quot;: &quot;主表&quot;,
+      &quot;value&quot;: &quot;2&quot;
+    },
+    {
+      &quot;label&quot;: &quot;附表&quot;,
+      &quot;value&quot;: &quot;3&quot;
+    },
+    {
+      &quot;label&quot;: &quot;树结构&quot;,
+      &quot;value&quot;: &quot;4&quot;
+    }
+  ],
+  &quot;arAuditStatus&quot;: [
+    {
+      &quot;label&quot;: &quot;退回&quot;,
+      &quot;value&quot;: &quot;0&quot;
+    },
+    {
+      &quot;label&quot;: &quot;审核通过&quot;,
+      &quot;value&quot;: &quot;1&quot;
+    }
+  ]
+}
+</code></pre>
+        <p><strong>错误时返回:</strong></p>
+        <pre><code>{
+  &quot;errmsg&quot;: &quot;发送内容为空&quot;,
+  &quot;errcode&quot;: 100011
+}
+</code></pre>
+        <h4>返回参数说明:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">label</td><td align="left">String</td><td>字典标签</td></tr>
+            <tr><td align="left">value</td><td align="left">String</td><td>字典值</td></tr>
+            </tbody>
+        </table>
+        <h4>树形字典接口：</h4>
+        <ul>
+            <li>字典接口</li>
+        </ul>
+        <h4>接口版本：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">版本号</th><th align="left">制定人</th><th align="left">制定日期</th><th>修订日期</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">1.0</td><td align="left">王存见</td><td align="left">2018-05-07</td><td>2018-05-07</td></tr>
+            </tbody>
+        </table>
+        <h4>请求URL:</h4>
+        <ul>
+            <li>http://{domain}/upms/tree/{code}</li>
+        </ul>
+        <h4>请求方式：</h4>
+        <ul>
+            <li>POST</li>
+        </ul>
+        <h4>请求头：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">是否必须</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">Content-Type</td><td align="left">是</td><td align="left">string</td><td>请求类型： x-www-form-urlencoded</td></tr>
+            </tbody>
+        </table>
+        <h4>请求参数:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">code</td><td align="left">String</td><td>分组编码,放在URL上面</td></tr>
+            <tr><td align="left">async</td><td align="left">boolean</td><td>是否异步加载，默认为false</td></tr>
+            <tr><td align="left">keyword</td><td align="left">String</td><td>关键字，使用关键字不能同时使用异步加载</td></tr>
+            <tr><td align="left">parentId</td><td align="left">String</td><td>父级编码</td></tr>
+            </tbody>
+        </table>
+        <h4>返回示例:</h4>
+        <p><strong>正确时返回:</strong></p>
+        <pre><code>[
+  {
+    &quot;code&quot;: &quot;1&quot;,
+    &quot;children&quot;: [
+      {
+        &quot;code&quot;: &quot;11&quot;,
+        &quot;name&quot;: &quot;第二级&quot;,
+        &quot;parentIds&quot;: &quot;040685fdc33646199e6fa42d1e91df17/&quot;,
+        &quot;id&quot;: &quot;bb6008c0fcfe4affb1ab5a0cd05c656a&quot;,
+        &quot;VueTreeNode_parendId&quot;: &quot;bb6008c0fcfe4affb1ab5a0cd05c656a&quot;,
+        &quot;parentId&quot;: &quot;040685fdc33646199e6fa42d1e91df17&quot;
+      }
+    ],
+    &quot;name&quot;: &quot;第一级&quot;,
+    &quot;id&quot;: &quot;040685fdc33646199e6fa42d1e91df17&quot;,
+    &quot;VueTreeNode_parendId&quot;: &quot;040685fdc33646199e6fa42d1e91df17&quot;
+  }
+]
+</code></pre>
+        <p><strong>错误时返回:</strong></p>
+        <pre><code>{
+  &quot;errmsg&quot;: &quot;发送内容为空&quot;,
+  &quot;errcode&quot;: 100011
+}
+</code></pre>
+        <h4>返回参数说明:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">id</td><td align="left">String</td><td>主键</td></tr>
+            <tr><td align="left">name</td><td align="left">String</td><td>节点名称</td></tr>
+            <tr><td align="left">code</td><td align="left">String</td><td>节点编码</td></tr>
+            <tr><td align="left">hasChildren</td><td align="left">String</td><td>是否有子节点</td></tr>
+            <tr><td align="left">parentIds</td><td align="left">String</td><td>上级ID树</td></tr>
+            <tr><td align="left">parentId</td><td align="left">String</td><td>上级ID</td></tr>
+            <tr><td align="left">children</td><td align="left">array</td><td>子节点</td></tr>
+            </tbody>
+        </table>
+        <h4>通过分组编码以及树的节点值获得LABEL：</h4>
+        <ul>
+            <li>字典接口</li>
+        </ul>
+        <h4>接口版本：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">版本号</th><th align="left">制定人</th><th align="left">制定日期</th><th>修订日期</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">1.0</td><td align="left">王存见</td><td align="left">2018-05-07</td><td>2018-05-07</td></tr>
+            </tbody>
+        </table>
+        <h4>请求URL:</h4>
+        <ul>
+            <li>http://{domain}/upms/tree/{code}/treeLabel</li>
+        </ul>
+        <h4>请求方式：</h4>
+        <ul>
+            <li>POST</li>
+        </ul>
+        <h4>请求头：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">是否必须</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">Content-Type</td><td align="left">是</td><td align="left">string</td><td>请求类型： x-www-form-urlencoded</td></tr>
+            </tbody>
+        </table>
+        <h4>请求参数:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">code</td><td align="left">String</td><td>分组编码,放在URL上面</td></tr>
+            <tr><td align="left">nodeValue</td><td align="left">String</td><td>节点值</td></tr>
+            </tbody>
+        </table>
+        <h4>返回示例:</h4>
+        <p><strong>正确时返回:</strong></p>
+        <pre><code>{
+  &quot;errcode&quot;: 0,
+  &quot;errmsg&quot;: &quot;处理成功&quot;,
+  &quot;label&quot;: &quot;第一级/第二级&quot;
+}
+</code></pre>
+        <p><strong>错误时返回:</strong></p>
+        <pre><code>{
+  &quot;errmsg&quot;: &quot;发送内容为空&quot;,
+  &quot;errcode&quot;: 100011
+}
+</code></pre>
+        <h4>返回参数说明:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">id</td><td align="left">String</td><td>主键</td></tr>
+            <tr><td align="left">name</td><td align="left">String</td><td>节点名称</td></tr>
+            <tr><td align="left">code</td><td align="left">String</td><td>节点编码</td></tr>
+            <tr><td align="left">children</td><td align="left">array</td><td>子节点</td></tr>
+            </tbody>
+        </table>
+        <h4>行政区划树接口：</h4>
+        <ul>
+            <li>行政区划树接口</li>
+        </ul>
+        <h4>接口版本：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">版本号</th><th align="left">制定人</th><th align="left">制定日期</th><th>修订日期</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">1.0</td><td align="left">王存见</td><td align="left">2018-05-07</td><td>2018-05-07</td></tr>
+            </tbody>
+        </table>
+        <h4>请求URL:</h4>
+        <ul>
+            <li>http://{domain}/upms/division</li>
+        </ul>
+        <h4>请求方式：</h4>
+        <ul>
+            <li>POST</li>
+        </ul>
+        <h4>请求头：</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">是否必须</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">Content-Type</td><td align="left">是</td><td align="left">string</td><td>请求类型： x-www-form-urlencoded</td></tr>
+            </tbody>
+        </table>
+        <h4>请求参数:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">code</td><td align="left">String</td><td>顶级行政区划编码</td></tr>
+            <tr><td align="left">async</td><td align="left">boolean</td><td>是否异步加载，默认为false</td></tr>
+            <tr><td align="left">parentId</td><td align="left">String</td><td>父级编码</td></tr>
+            </tbody>
+        </table>
+        <h4>返回示例:</h4>
+        <p><strong>正确时返回:</strong></p>
+        <pre><code>[
+  {
+    &quot;code&quot;: &quot;52&quot;,
+    &quot;children&quot;: [
+      {
+        &quot;code&quot;: &quot;5201&quot;,
+        &quot;name&quot;: &quot;贵阳市&quot;,
+        &quot;parentIds&quot;: &quot;3b868e7303fa44798f3e73372505b857/&quot;,
+        &quot;fullName&quot;: &quot;贵州省贵阳市&quot;,
+        &quot;id&quot;: &quot;898e0337265b41fba6f418e09aa0e090&quot;,
+        &quot;VueTreeNode_parendId&quot;: &quot;898e0337265b41fba6f418e09aa0e090&quot;,
+        &quot;parentId&quot;: &quot;3b868e7303fa44798f3e73372505b857&quot;
+      }
+    ],
+    &quot;name&quot;: &quot;贵州省&quot;,
+    &quot;fullName&quot;: &quot;贵州省&quot;,
+    &quot;id&quot;: &quot;3b868e7303fa44798f3e73372505b857&quot;,
+    &quot;VueTreeNode_parendId&quot;: &quot;3b868e7303fa44798f3e73372505b857&quot;
+  }
+]
+</code></pre>
+        <p><strong>错误时返回:</strong></p>
+        <pre><code>{
+  &quot;errmsg&quot;: &quot;发送内容为空&quot;,
+  &quot;errcode&quot;: 100011
+}
+</code></pre>
+        <h4>返回参数说明:</h4>
+        <table class="layui-table">
+            <thead>
+            <tr><th align="left">参数名</th><th align="left">类型</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+            <tr><td align="left">id</td><td align="left">String</td><td>主键</td></tr>
+            <tr><td align="left">name</td><td align="left">String</td><td>地区名称</td></tr>
+            <tr><td align="left">code</td><td align="left">String</td><td>地区编码</td></tr>
+            <tr><td align="left">fullName</td><td align="left">String</td><td>地区全名</td></tr>
+            <tr><td align="left">parentIds</td><td align="left">String</td><td>上级编码</td></tr>
+            <tr><td align="left">children</td><td align="left">array</td><td>子节点</td></tr>
+            </tbody>
+        </table>
+
+        <div class="layui-elem-quote">
+            <p>layui - 用心与你沟通</p>
+        </div>
+    </div>
+</div>
+
+<div class="layui-footer footer footer-doc">
+    <div class="layui-main">
+        <p>&copy; 2018 <a href="/">layui.com</a> MIT license</p>
+        <p>
+            <a href="http://fly.layui.com/case/2018/" target="_blank">案例</a>
+            <a href="http://fly.layui.com/jie/3147/" target="_blank">支持</a>
+            <a href="javascript:;" site-event="contactInfo">联系</a>
+            <a href="https://github.com/sentsin/layui/" target="_blank" rel="nofollow">GitHub</a>
+            <a href="https://gitee.com/sentsin/layui" target="_blank" rel="nofollow">码云</a>
+            <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+        </p>
+        <p class="site-union">
+            <a href="https://www.upyun.com?from=layui" target="_blank" rel="nofollow" upyun><img src="//res.layui.com/static/images/other/upyun.png?t=1"></a>
+            <span>提供 CDN 赞助</span>
+        </p>
+    </div>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="${staticPath}/layui/layui.js"></script>
+<script>
+    window.global = {
+        pageType: 'index'
+        ,preview: function(){
+            var preview = document.getElementById('LAY_preview');
+            return preview ? preview.innerHTML : '';
+        }()
+    };
+    layui.config({
+        base: '${staticPath}/mods/'
+        ,version: "3.0.0"
+    }).use('global');
+</script>
+
+</body>
+</html>

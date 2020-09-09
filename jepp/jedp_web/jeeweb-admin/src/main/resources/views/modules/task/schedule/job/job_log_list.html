@@ -1,0 +1,18 @@
+<% layout('/layouts/list.html', {title: '运行日志', libs: ''}){ %>
+<#grid:grid id="schedulejobGrid" url="${adminPath}/task/schedule/job/log/ajaxList">
+    <#grid:column label="sys.common.key" hidden="true"   name="id" width="100"/>
+    <#grid:column label="sys.common.opt"  name="opt" formatter="button" width="80"/>
+    <#grid:button  groupname="opt" function="delete" />
+    <#grid:column label="任务名称"  name="jobName"   query="true" />
+    <#grid:column label="任务分组"  name="jobGroup" query="true"   width="80"/>
+    <#grid:column label="执行类"  name="springBean" query="true"  />
+    <#grid:column label="方法名"  name="methodName" width="80"  />
+    <#grid:column label="方法参数"  name="methodParams"   width="80" />
+    <#grid:column label="日志信息"  name="jobMessage" width="280" />
+    <#grid:column label="状态"  name="status"  width="80" query="true" queryMode="select" formatterValue="-1:失败;0:普通;1:成功" formatterClass="0:label label-primary;1:label label-success;-1:label label-danger" />
+    <#grid:column label="操作时间"  name="createTime" width="160" query="true" queryMode="date" condition="between" />
+    <#grid:toolbar  function="delete" />
+    <#grid:toolbar  function="search"  />
+    <#grid:toolbar  function="reset" />
+</#grid:grid>
+<% } %>

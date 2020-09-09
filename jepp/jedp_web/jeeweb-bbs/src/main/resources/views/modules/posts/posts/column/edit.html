@@ -1,0 +1,43 @@
+<% layout('/layouts/form.html', {title: '栏目编辑', formId: 'roleForm', bodyClass: 'white-bg', libs: 'jquery-ztree'}){ %>
+<#form:form id="roleForm" modelAttribute="data"  method="post" class="form-horizontal">
+	<#form:hidden path="id"/>
+	<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		<tbody>
+			<tr>
+				<td  class="width-15 active text-right">
+					<label><font color="red">*</font>名称:</label>
+				</td>
+				<td class="width-35" >
+					<#form:input path="name" class="form-control " datatype="*" nullmsg="请输入主题名称！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+				</td>
+			</tr>
+			<tr>
+				<td  class="width-15 active text-right">
+					<label><font color="red">*</font>别名:</label>
+				</td>
+				<td  class="width-35" >
+					<#form:input path="alias" class="form-control"  htmlEscape="false"  datatype="*"  nullmsg="请输入主题别名！"/>
+					<label class="Validform_checktip"></label>
+				</td>
+			</tr>
+			<tr>
+				<td class="active">
+					<label class="pull-right"><font color="red">*</font>编码:</label>
+				</td>
+				<td>
+					<#form:input path="code" class="form-control"  htmlEscape="false"  datatype="*"  nullmsg="请输入主题编码！"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="active">
+					<label class="pull-right"><font color="red">*</font>排序值:</label>
+				</td>
+				<td>
+					<#form:input path="sort" class="form-control" defaultValue="0"  htmlEscape="false"  datatype="*"  nullmsg="请输入排序！"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</#form:form>
+<% } %>

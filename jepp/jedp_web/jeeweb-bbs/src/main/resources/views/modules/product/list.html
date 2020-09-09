@@ -1,0 +1,19 @@
+<% layout('/layouts/list.html', {title: '产品管理'}){ %>
+<#grid:grid id="roleGrid" url="${adminPath}/product/ajaxList">
+    <#grid:column label="sys.common.key" hidden="true"   name="id" width="100"/>
+    <#grid:column label="sys.common.opt"  name="opt" formatter="button" width="100"/>
+    <#grid:button   groupname="opt" function="delete" />
+    <#grid:column label="产品名称"  name="name"  query="true" condition="like" />
+    <#grid:column label="产品版本"  name="version" dict="productVersion"  query="true" queryMode="select"/>
+    <#grid:column label="授权期限"  name="authorizationPeriod"  dict="authorizationPeriod"   query="true" queryMode="select" />
+    <#grid:column label="应付总金额"  name="totalAmount"  />
+    <#grid:column label="折扣金额"  name="discountAmount" />
+
+    <#grid:toolbar function="add" winwidth="100%" winheight="100%"/>
+    <#grid:toolbar   function="update" winwidth="100%" winheight="100%"/>
+    <#grid:toolbar   function="delete"/>
+
+    <#grid:toolbar  function="search"/>
+    <#grid:toolbar  function="reset"/>
+</#grid:grid>
+<% } %>

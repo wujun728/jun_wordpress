@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>联系方式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+jQuery(document).ready(function(){
+	$('#contactform').submit(function(){				  
+		var action = $(this).attr('action');
+		$.post(action, { 
+			name: $('#name').val(),
+			email: $('#email').val(),
+			company: $('#company').val(),
+			subject: $('#subject').val(),
+			message: $('#message').val()
+		},
+			function(data){
+				$('#contactform #submit').attr('disabled','');
+				$('.response').remove();
+				$('#contactform').before('<p class="response">'+data+'</p>');
+				$('.response').slideDown();
+				if(data=='Message sent!') $('#contactform').slideUp();
+			}
+		); 
+		return false;
+	});
+});
+// ]]>
+</script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="block_header">
+      <div class="search">
+          <form id="form1" name="form1" method="post" action="">
+            <label>
+              <input name="q" type="text" class="keywords" id="textfield" maxlength="50" value="Search..." />
+              <input name="b" type="image" src="images/search.gif" class="button" />
+            </label>
+          </form>
+      </div>
+         <div class="header_text"><a href="http://www.wozaixianshang.com/">官方微博</a> | <a href="http://blog.wozaixianshang.com/">博客</a></div>    <div class="clr"></div>
+   <div class="block_header_form">
+      <div class="logo"><a href="index.html"><img src="images/logo.gif" width="165" height="69" border="0" alt="logo" /></a></div>
+      <div style="float:right;">
+        <div class="menu">
+          <ul>
+            <li><a href="index.html"><span>主页</span></a></li>
+             <li><a href="services.html"><span>服务</span></a></li>                       
+            <li><a href="projects.html"><span>案例</span></a></li>
+            <li><a href="about.html"><span>关于我们</span></a></li>
+            <li><a href="contact.html" class="active"><span>联系我们</span></a></li>
+          </ul>
+        </div>
+        </div>
+        <div class="clr"></div>
+      </div>
+      <div class="slider2">
+        <h2>联系方式</h2>
+             </div>
+      <div class="clr"></div>
+      
+    </div>
+  </div>
+    <div class="body">
+    <div class="body_resize">
+    <div class="left">
+    <h2>联系我们</h2>
+    <p> 
+请您填写下面的表格，我们会认真阅读！   </p>
+    <p>&nbsp;</p>
+    <form action="contact.php" method="post" id="contactform">
+            <ol>
+              <li>
+                <label for="name">名称</label>
+                <input id="name" name="name" class="text" />
+              </li>
+              <li>
+                <label for="email">电子邮箱<span class="red">*</span></label>
+                <input id="email" name="email" class="text" />
+              </li>
+              <li>
+                <label for="company">公司名称</label>
+                <input id="company" name="company" class="text" />
+              </li>
+              <li>
+                <label for="subject">主题</label>
+                <input id="subject" name="subject" class="text" />
+              </li>
+              <li>
+                <label for="message">信息<span class="red">*</span></label>
+                <textarea id="message" name="message" rows="6" cols="50"></textarea>
+              </li>
+              <li class="buttons">
+                <input type="image" name="imageField" id="imageField" src="images/send.gif" />
+              </li>
+          </ol>
+        </form>
+</div>
+    <div class="right">
+    <h2>联系方式</h2>
+    <p>在这里，获取最快的联系方式 </p>
+    <p class="grey"><strong>电话：</strong> +123456789<br />
+      <strong>传真：</strong> +123456789<br />
+      <strong>邮箱：</strong> company@domainname.com </p>
+    <p class="grey">&nbsp;</p>
+    <img src="images/twitter.jpg" width="82" height="49" alt="img" />
+    <p>官方微博</p><p class="blye"> weibo.com/547767315</p>
+    </div>
+      <div class="clr"></div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+    <div class="footer">
+    <div class="footer_resize">
+      <p class="leftt">Copyright © wozaixianshang.com. All Rights Reserved<br />
+        <a href="inedx.html">主页</a> | <a href="#">联系我们</a> | <a href="#">RSS </a></p>
+      <p class="rightt">Design by <a href="http://wozaixianshang.com/">wozaixianshang.com</a></p>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+</body>
+</html>

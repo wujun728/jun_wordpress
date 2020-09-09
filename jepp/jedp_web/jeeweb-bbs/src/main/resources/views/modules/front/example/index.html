@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html style="background-color: #e2e2e2;">
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="{{ lay.base.keywords }}">
+  <meta name="description" content="{{ lay.base.description }}">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>JeeWeb优秀案列</title>
+  <link rel="stylesheet" href="${staticPath}/layui/css/layui.css">
+  <link rel="stylesheet" href="${staticPath}/css/global.css">
+  <style>
+  .header{border-bottom: 1px solid #404553; border-right: 1px solid #404553;}
+  </style>
+</head>
+<body class="fly-full">
+<% include("../common/header.html"){}%>
+
+<div class="fly-case-header">
+  <p class="fly-case-year">JeeWeb优秀案列</p>
+  <a href="${ctx}/example" style="display: none">
+    <img class="fly-case-banner" src="${staticPath}/images/case.png" alt="JeeWeb优秀案列">
+  </a>
+  <div class="fly-case-btn">
+    <a href="javascript:;" class="layui-btn layui-btn-big fly-case-active" data-type="push">提交案例</a>
+    <a href="${ctx}/example/my" class="layui-btn layui-btn-primary layui-btn-big">我的案例</a>
+    
+    <a href="${ctx}/example/my" target="_blank" style="display:none;padding: 0 15px; text-decoration: underline">案例要求</a>
+  </div>
+</div>
+
+<div class="fly-main" style="overflow: hidden;">
+
+  <div class="fly-tab-border fly-case-tab" style="display: none">
+    <span>
+      <a href="" class="tab-this">2017年度</a>
+      <a href="">2016年度</a>
+    </span>
+  </div>
+  <div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+      <li <% if(orderBy == 'publish'){%> class="layui-this" <%}%>><a href="${ctx}/example">按提交时间</a></li>
+      <li <% if(orderBy == 'praise'){%> class="layui-this" <%}%>><a href="${ctx}/example/praise">按点赞排行</a></li>
+    </ul>
+  </div>
+  <% if (examplePageBean.total > 0) {%>
+  <ul class="fly-case-list">
+    <% for (example in examplePageBean.records) {%>
+    <%include("./example-li.html",{example: example}){}%>
+    <%}%>
+  </ul>
+  <%}%>
+  <% if (examplePageBean.total == 0) {%>
+  <blockquote class="layui-elem-quote layui-quote-nm">暂无数据</blockquote>
+  <%}%>
+  <% if (examplePageBean.pages > 1) {%>
+  <div style="text-align: center">
+    <#page:pager pageSize="${examplePageBean.size}" pageNo="${examplePageBean.current}" url="${ctx}/example/page" recordCount="${examplePageBean.total}"/>
+  </div>
+  <%}%>
+
+</div>
+
+<% include("../common/footer.html",{page:'case'}){}%>
+<script>
+layui.config({
+  version: "3.0.0"
+  ,base: '${staticPath}/mods/' //这里实际使用时，建议改成绝对路径
+}).extend({
+  fly: 'index'
+}).use('fly');
+</script>
+</body>
+</html>

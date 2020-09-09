@@ -1,0 +1,36 @@
+<% layout('/layouts/form.html', {title: '模版编辑', formId: 'smsTemplateForm', bodyClass: 'white-bg', libs: 'bootstrap-fileinput,simditor'}){ %>
+<#form:form id="smsTemplateForm" modelAttribute="data"  method="post" class="form-horizontal">
+	<#form:hidden path="id"/>
+	<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		<tbody>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>模版名称:</label>
+			</td>
+			<td class="width-35">
+				<#form:input path="name" htmlEscape="false" class="form-control"  datatype="*"    />
+				<label class="Validform_checktip"></label>
+			</td>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>业务类型:</label>
+			</td>
+			<td class="width-35">
+				<#form:select path="businessType" htmlEscape="false" class="form-control"  dict="businesstype"  datatype="*"    />
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>模版内容:</label>
+			</td>
+			<td  colspan="3">
+				<#form:textarea path="templateContent" rows="4" htmlEscape="false" class="form-control"  datatype="*"    />
+				<span class="help-block m-b-none"><i class="fa fa-info-circle"></i>请填写您在服务商备案的模板ID或内容</span>
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+
+		</tbody>
+	</table>
+</#form:form>
+<% } %>

@@ -1,0 +1,82 @@
+<% layout('/layouts/form.html', {title: '通知公告', formId: 'schedulejobForm', bodyClass: 'white-bg', libs: 'bootstrap-fileinput,simditor'}){ %>
+<#form:form id="schedulejobForm" modelAttribute="data" action="${adminPath}/task/schedule/job/saveScheduleJob" method="post" class="form-horizontal">
+	<#form:hidden path="id"/>
+	<#form:hidden path="jobStatus" defaultValue="0"/>
+	<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		<tbody>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>任务名称:</label>
+			</td>
+			<td class="width-35" >
+				<#form:input path="jobName" class="form-control " datatype="*" nullmsg="请输入任务名称！" htmlEscape="false" />
+				<label class="Validform_checktip"></label>
+			</td>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>任务分组:</label>
+			</td>
+			<td  class="width-35" >
+				<#form:input path="jobGroup" class="form-control"  htmlEscape="false"  datatype="*"  nullmsg="请输入任务分组！"/>
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>加载方式:</label>
+			</td>
+			<td class="width-35" >
+				<#form:radiobuttons path="loadWay"   dict="loadway" defaultValue="1" datatype="*"  htmlEscape="false" cssClass="i-checks required" />
+				<label class="Validform_checktip"></label>
+			</td>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>执行类:</label>
+			</td>
+			<td class="width-35" >
+				<#form:input path="executeClass" class="form-control " datatype="*"   nullmsg="请输入类路径！" htmlEscape="false" />
+				<span class="help-block m-b-none"><i class="fa fa-info-circle"></i>SpringBean:填写Bean定义的名称；普通类:填写类的路径</span>
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+		<tr class="classView">
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>方法名:</label>
+			</td>
+			<td  class="width-35" >
+				<#form:input path="methodName" class="form-control" datatype="*"   htmlEscape="false"     nullmsg="请输入方法名！"/>
+				<label class="Validform_checktip"></label>
+			</td>
+			<td  class="width-15 active text-right">
+				<label>方法参数:</label>
+			</td>
+			<td  class="width-35" >
+				<#form:input path="methodParams" class="form-control"  htmlEscape="false"  nullmsg="请输入方法参数！"/>
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>cron表达式:</label>
+			</td>
+			<td class="width-35">
+				<#form:input path="cronExpression" class="form-control " datatype="*" nullmsg="请输入角色名称！" htmlEscape="false" />
+				<label class="Validform_checktip"></label>
+			</td>
+			<td class="active">
+				<label class="pull-right"><font color="red">*</font>是否同步:</label>
+			</td>
+			<td class="width-35">
+				<#form:radiobuttons path="isConcurrent"   dict="sf" defaultValue="1"  htmlEscape="false" cssClass="i-checks required" />
+			</td>
+		</tr>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label>描述:</label>
+			</td>
+			<td class="width-35" colspan="3" >
+				<#form:textarea path="description" htmlEscape="false" rows="3" maxlength="200" class="form-control "/>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</#form:form>
+<% } %>

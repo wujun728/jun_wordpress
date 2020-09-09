@@ -1,0 +1,25 @@
+<% layout('/layouts/form.html', {title: @MessageUtils.getMessage('sys.menu.edittitle',''), formId: 'menuForm', bodyClass: 'white-bg', libs: ''}){ %>
+<#form:form id="menuForm"  modelAttribute="data"  method="post" class="form-horizontal">
+	<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		<tbody>
+			<tr>
+				<td class="width-15 active"><label class="pull-right"><font color="red">*</font>父节权限:</label></td>
+				<td class="width-35" >
+					<#form:input path="parentPermission" nested="false" class="form-control " datatype="*" nullmsg="请输入父节权限！" htmlEscape="false" />
+					<label class="Validform_checktip"></label>
+					<span class="help-block m-b-none">生成按钮操作执行后，会删除以前菜单下面的所有按钮，请谨慎操作</span>
+				</td>
+			</tr>
+		   <tr>
+			   <td class="active">
+				   <label class="pull-right">
+					   <font color="red">*</font>权限:</label></td>
+			   <td class="width-35">
+				    <#form:checkboxes path="permissions" nested="false" dict="permissionTypes" /><br/>
+				   <label class="Validform_checktip"></label>
+			   </td>
+		   </tr>
+		</tbody>
+	</table>
+</#form:form>
+<% } %>

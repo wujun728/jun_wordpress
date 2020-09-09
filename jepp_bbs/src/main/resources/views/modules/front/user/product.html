@@ -1,0 +1,46 @@
+<% layout('../layouts/layout.html', {
+title: '我的产品',
+page: 'user',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop fly-user-main">
+    <% include("../common/user-nav.html"){}%>
+    <div class="fly-panel fly-panel-user" pad20="">
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title">
+                <!--<li class="layui-this">我的 layuiAdmin</li>-->
+                <li><a href="/user/product/">我的全部产品</a></li>
+            </ul>
+            <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 5px 0;">
+                <div class="layui-tab-item layui-show" style="display: none;">
+                    <form action="" class="layui-form"  style="display: none;">>
+                        <div class="layui-form-item" style="margin: 10px 0 0;">
+                            <label class="layui-form-label" style="width: auto; padding-right: 5px;">别名筛选：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="alias" class="layui-input" value="layuiAdmin" />
+                            </div>
+                            <button type="submit" class="layui-btn">搜索</button>
+                        </div>
+                    </form>
+                    <table id="LAY_productList"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>
+<script>
+    layui.data.alias ='JeeWeb';
+</script >
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jeeweb.bbs.modules.example.mapper.PraiseMapper" >
+
+    <sql id="Base_Column_List" >
+        DISTINCT
+        u.id as "user.id",
+        u.realname as "user.realname",
+        u.username as "user.username",
+        u.portrait as "user.portrait",
+        u.email as "user.email",
+        u.phone as "user.phone",
+        u.vip_level as "user.vipLevel",
+        u.auth as "user.auth",
+        u.auth_info as "user.authInfo",
+        u.status as "user.status",
+        p.id,
+        p.example_id as "exampleId",
+        p.praise_time as "praiseTime",
+        p.praise_uid as "praiseUid"
+    </sql>
+
+
+    <select id="selectPraiseList" resultType="cn.jeeweb.bbs.modules.example.entity.Praise">
+        select
+        <include refid="Base_Column_List" />
+        from example_praise p
+        LEFT JOIN sys_user u on  p.praise_uid = u.id
+        <if test="exampleId != '' and exampleId != null">
+            WHERE p.example_id = #{exampleId}
+        </if>
+    </select>
+
+</mapper>

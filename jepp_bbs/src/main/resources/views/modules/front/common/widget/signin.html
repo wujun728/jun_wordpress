@@ -1,0 +1,23 @@
+<%
+var signInInfo = signInUtils.getSignInInfo();
+%>
+<div class="fly-panel fly-signin fly-panel-border">
+    <div class="fly-panel-title">
+        签到
+        <i class="fly-mid"></i>
+        <a href="javascript:;" class="fly-link" id="LAY_signinHelp">说明</a>
+        <i class="fly-mid"></i>
+        <a href="javascript:;" class="fly-link" id="LAY_signinTop">活跃榜<span class="layui-badge-dot"></span></a>
+        <span class="fly-signin-days">已连续签到<cite>${signInInfo.signDay}</cite>天</span>
+    </div>
+    <div class="fly-panel-main fly-signin-main">
+        <% if(signInInfo.isSign == 0){%>
+        <button class="layui-btn layui-btn-danger" id="LAY_signin">今日签到</button>
+        <span>可获得<cite>${signInInfo.experience}</cite>飞吻</span>
+        <% }else{%>
+        <!-- 已签到状态 -->
+        <button class="layui-btn layui-btn-disabled">今日已签到</button>
+        <span>获得了<cite>${signInInfo.experience}</cite>飞吻</span>
+        <%}%>
+    </div>
+</div>

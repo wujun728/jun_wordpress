@@ -1,0 +1,140 @@
+<%
+layout('../layouts/layout.html', {
+title: posts.title,
+page: 'jie',
+keywords:  posts.title,
+description: @StringUtils.substring(posts.content,0,250)
+}){ %>
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8 content detail">
+      <div class="fly-panel detail-box">
+        <h1>${posts.title}</h1>
+        <div class="fly-detail-info">
+          <!-- <span class="layui-badge">审核中</span> -->
+          <span class="layui-badge layui-bg-green fly-detail-column"><% var columnName = postsUtils.getPostsColumnByCode(posts.column).name;%>${columnName}</span>
+
+          <% if(posts.solved == 0){%><span class="layui-badge" style="background-color: #999;">未结</span><%}%>
+          <% if(posts.solved == 1){%><span class="layui-badge" style="background-color: #5FB878;">已结</span><%}%>
+
+          <% if(posts.top == 1){%><span class="layui-badge layui-bg-black">置顶</span><%}%>
+          <% if(posts.essence == 1){%><span class="layui-badge layui-bg-red">精帖</span><%}%>
+          <div class="fly-admin-box" data-id="${posts.id}">
+            <%if(shiro.hasRole('admin')) { %>
+            <% if(posts.top == 0){%><span class="layui-btn layui-btn-xs jie-admin" type="set" field="top" rank="1">置顶</span><%}%>
+            <% if(posts.top == 1){%><span class="layui-btn layui-btn-xs jie-admin" type="set" field="top" rank="0" style="background-color:#ccc;">取消置顶</span><%}%>
+
+            <% if(posts.essence == 0){%><span class="layui-btn layui-btn-xs jie-admin" type="set" field="essence" rank="1">加精</span><%}%>
+            <% if(posts.essence == 1){%><span class="layui-btn layui-btn-xs jie-admin" type="set" field="essence" rank="0" style="background-color:#ccc;">取消加精</span><%}%>
+            <span class="layui-btn layui-btn-xs jie-admin" type="del">删除</span>
+            <%}else if(posts.uid == loginUser.id){%>
+            <span class="layui-btn layui-btn-xs jie-admin" type="del">删除</span>
+            <%}%>
+          </div>
+          <span class="fly-list-nums">
+            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> ${posts.commentCount}</a>
+            <i class="iconfont" title="人气">&#xe60b;</i> ${posts.readCount}
+          </span>
+        </div>
+        <div class="detail-about">
+          <a class="fly-avatar" href="${ctx}/user/home/${posts.user.id}">
+            <img src="${posts.user.portrait}" alt="${posts.user.realname}">
+          </a>
+          <div class="fly-detail-user">
+            <a href="${ctx}/user/home/${posts.user.id}" class="fly-link">
+              <cite>${posts.user.realname}</cite>
+              <% if(posts.user.auth != '' && posts.user.auth == '1'){%>
+              <i class="iconfont icon-renzheng" title="认证信息：${posts.user.authInfo}"></i>
+              <%}%>
+              <% if(posts.user.vipLevel != '' && posts.user.vipLevel != '0'){%>
+              <i class="layui-badge fly-badge-vip">VIP${posts.user.vipLevel}</i>
+              <%}%>
+            </a>
+            <span><% var publishTime = @DateUtils.convertTimeToFormat(posts.publishTime);%>${publishTime}</span>
+          </div>
+          <div class="detail-hits" id="LAY_jieAdmin" data-id="${posts.id}">
+            <% if(posts.column == '0'){%>
+            <span style="padding-right: 10px; color: #FF7200">悬赏：${posts.experience}飞吻</span>
+            <%}%>
+            <% if(loginUser.id == posts.uid){%><span class="layui-btn layui-btn-xs jie-admin" type="edit"><a href="${ctx}/posts/${posts.id}/update">编辑此贴</a></span><%}%>
+          </div>
+        </div>
+        <% if(posts.column == '0'){%>
+        <table class="layui-table">
+          <tbody>
+          <tr>
+            <td>版本：${posts.project} <span style="padding-right: 10px; color: #FF7200">V ${posts.version}</span> </td>
+            <td>浏览器：${posts.browser}</td>
+          </tr>
+          </tbody>
+        </table>
+        <%}%>
+        <div class="detail-body photos">
+          ${posts.content}
+        </div>
+      </div>
+
+      <div class="fly-panel detail-box" id="flyReply">
+        <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
+          <legend>回帖</legend>
+        </fieldset>
+
+        <ul class="jieda" id="jieda">
+          <% for (comment in commentPageBean.records) {%>
+           <%include("./comment-li.html",{comment: comment}){}%>
+          <%}%>
+        </ul>
+        <% if (commentPageBean.total == 0) {%>
+        <!-- 无数据时 -->
+        <div class="fly-none">消灭零回复</div>
+        <%}%>
+        <% if (commentPageBean.pages > 1) {%>
+        <div style="text-align: center">
+          <#page:pager pageSize="${commentPageBean.size}" pageNo="${commentPageBean.current}" url="${listUrl}/page" recordCount="${commentPageBean.total}"/>
+        </div>
+        <%}%>
+
+        <div class="layui-form layui-form-pane">
+          <form action="${ctx}/posts/comment/add/" method="post">
+            <div class="layui-form-item layui-form-text">
+              <a name="comment"></a>
+              <div class="layui-input-block">
+                <textarea id="L_content" name="content" required lay-verify="required" placeholder="请输入内容"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <input type="hidden" name="pid" value="${posts.id}">
+              <button class="layui-btn" lay-filter="*" lay-submit>提交回复</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4">
+      <!--本周热议-->
+      <%include("../common/widget/posts-week-top.html",{column:'',pageSize: 16}){}%>
+
+      <!--广告-->
+      <%include("../common/widget/ad.html"){}%>
+      <!--二维码-->
+      <%include("../common/widget/qrcode.html"){}%>
+    </div>
+  </div>
+</div>
+<% } %>
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use(['fly', 'face'], function(){
+        var $ = layui.$
+            ,fly = layui.fly;
+        //如果你是采用模版自带的编辑器，你需要开启以下语句来解析。
+        $('.detail-body').each(function(){
+          var othis = $(this), html = othis.html();
+          othis.html(fly.content(html));
+        });
+    });
+</script>

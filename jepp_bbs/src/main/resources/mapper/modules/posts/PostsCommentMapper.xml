@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jeeweb.bbs.modules.posts.mapper.PostsCommentMapper" >
+
+    <sql id="Base_Column_List" >
+        DISTINCT
+        c.id,
+        c.pid,
+        c.content,
+        c.publish_time as publishTime,
+        c.uid,
+        c.accept,
+        (select count(p.id) from posts_comment_praise p WHERE p.tid= c.id) as praiseCount,
+        <if test="userId != '' and userId != null">
+        (select count(p.id) from posts_comment_praise p WHERE p.tid= c.id and p.praise_uid=#{userId}) as praise,
+        </if>
+        u.id as "user.id",
+        u.realname as "user.realname",
+        u.username as "user.username",
+        u.portrait as "user.portrait",
+        u.email as "user.email",
+        u.phone as "user.phone",
+        u.vip_level as "user.vipLevel",
+        u.auth as "user.auth",
+        u.auth_info as "user.authInfo",
+        u.status as "user.status",
+        p.id as "posts.id",
+        p.column as "posts.column",
+        p.title as "posts.title",
+        p.project as "posts.project",
+        p.version as "posts.version",
+        p.browser as "posts.browser",
+        p.content as "posts.content",
+        p.experience as "posts.experience",
+        p.uid as "posts.uid",
+        p.publish_time as "posts.publishTime",
+        p.read_count as "posts.readCount",
+        p.top as "posts.top",
+        p.solved as "posts.solved",
+        p.essence as "posts.essence"
+    </sql>
+
+
+    <select id="selectCommentList" resultType="cn.jeeweb.bbs.modules.posts.entity.PostsComment">
+        select
+        <include refid="Base_Column_List" />
+        from posts_comment c
+        LEFT JOIN sys_user u on c.uid = u.id
+        LEFT JOIN posts p on c.pid = p.id
+        <if test="ew.sqlSegment != '' and ew.sqlSegment != null">
+            <where>
+                ${ew.sqlSegment}
+            </where>
+        </if>
+    </select>
+
+    <!--查询周评论榜-->
+    <sql id="Week_User_Column_List" >
+        DISTINCT
+        u.id,
+        u.realname,
+        u.username,
+        u.portrait,
+        u.email,
+        u.phone,
+        u.vip_level as "vipLevel",
+        u.auth,
+        u.auth_info as "authInfo",
+        u.status,
+        (SELECT count(c.id) FROM posts_comment c
+        WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) <![CDATA[ <= ]]> date(c.publish_time) and c.uid = u.id) as commentCount
+    </sql>
+
+    <select id="selectWeekCommentUserList" resultType="cn.jeeweb.bbs.modules.posts.entity.PostsCommentUser">
+        select
+        <include refid="Week_User_Column_List" />
+        FROM sys_user u ORDER BY commentCount DESC
+    </select>
+
+</mapper>

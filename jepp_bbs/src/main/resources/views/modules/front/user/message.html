@@ -1,0 +1,56 @@
+<% layout('../layouts/layout.html', {
+title: '我的消息',
+page: 'user',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+
+<div class="layui-container fly-marginTop fly-user-main">
+  <% include("../common/user-nav.html"){}%>
+
+  <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+  </div>
+  <div class="site-mobile-shade"></div>
+
+  <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+  </div>
+  <div class="site-mobile-shade"></div>
+
+
+  <div class="fly-panel fly-panel-user" pad20>
+    <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
+      <% if (messageCount > 0) {%><button class="layui-btn layui-btn-danger" id="LAY_delallmsg">清空全部消息</button><%}%>
+      <div  id="LAY_minemsg" style="margin-top: 10px;">
+        <% if (messageCount == 0) {%>
+        <div class="fly-none">没有相关数据</div>
+        <%}else{%>
+        <!--<div class="fly-none">您暂时没有最新消息</div>-->
+        <ul class="mine-msg">
+          <% for (message in messageList) {%>
+          <li data-id="${message.id}">
+            <blockquote class="layui-elem-quote">
+              ${message.content}
+            </blockquote>
+            <p><span><% var sendDate = @DateUtils.convertTimeToFormat(message.sendDate);%>${sendDate}</span><a href="javascript:;" class="layui-btn layui-btn-small layui-btn-danger fly-delete">删除</a></p>
+          </li>
+          <%}%>
+        </ul>
+        <%}%>
+      </div>
+    </div>
+  </div>
+
+</div>
+<% } %>
+
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

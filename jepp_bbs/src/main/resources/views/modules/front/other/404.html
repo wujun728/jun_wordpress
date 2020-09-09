@@ -1,0 +1,24 @@
+<% layout('../layouts/layout.html', {
+title:  status,
+page: '',
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop">
+  <div class="fly-panel">
+    <div class="fly-none">
+      <h2><i class="iconfont icon-404"></i></h2>
+      <p>页面或者数据被<a href="http://www.jeeweb.cn/" target="_blank"> 纸飞机 </a>运到火星了，啥都看不到了…</p>
+      <p>${tips!}</p>
+    </div>
+  </div>
+</div>
+<% } %>
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'  //这里实际使用时，建议改成绝对路径
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

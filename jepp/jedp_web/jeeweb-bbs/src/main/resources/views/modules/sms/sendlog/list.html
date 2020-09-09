@@ -1,0 +1,17 @@
+<% layout('/layouts/list.html', {title: '短信发送日志列表'}){ %>
+<#grid:grid id="smsSendLogGridId" url="${adminPath}/sms/sendlog/ajaxList">
+    <#grid:column label="sys.common.key" hidden="true"   name="id" width="100"/>
+    <#grid:column label="联系电话"  name="phone"  query="true"  width="120" queryMode="input"  condition="like" />
+    <#grid:column label="模版名称"  name="templateName"   width="120" />
+    <#grid:column label="模板编码"  name="sendCode"  query="true" width="120"  queryMode="input"  condition="like" />
+    <#grid:column label="是否发送成功"  name="status" dict="sf"  query="true" formatterValue="-1:发送失败;0:发送中;1:发送成功" formatterClass="0:label label-primary;1:label label-success;-1:label label-danger" queryMode="select"  condition="eq" />
+    <#grid:column label="响应消息ID"  width="120" name="smsid" />
+    <#grid:column label="返回码"  name="code" hidden="true" />
+    <#grid:column label="返回消息"  name="msg" />
+    <#grid:column label="响应时间"  name="responseDate" />
+    <#grid:toolbar function="delete"/>
+
+    <#grid:toolbar function="search"/>
+    <#grid:toolbar function="reset"/>
+</#grid:grid>
+<% } %>

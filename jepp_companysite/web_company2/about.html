@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>关于我们</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+jQuery(document).ready(function(){
+	$('#contactform').submit(function(){				  
+		var action = $(this).attr('action');
+		$.post(action, { 
+			name: $('#name').val(),
+			email: $('#email').val(),
+			company: $('#company').val(),
+			subject: $('#subject').val(),
+			message: $('#message').val()
+		},
+			function(data){
+				$('#contactform #submit').attr('disabled','');
+				$('.response').remove();
+				$('#contactform').before('<p class="response">'+data+'</p>');
+				$('.response').slideDown();
+				if(data=='Message sent!') $('#contactform').slideUp();
+			}
+		); 
+		return false;
+	});
+});
+// ]]>
+</script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="block_header">
+      <div class="search">
+          <form id="form1" name="form1" method="post" action="">
+            <label>
+              <input name="q" type="text" class="keywords" id="textfield" maxlength="50" value="Search..." />
+              <input name="b" type="image" src="images/search.gif" class="button" />
+            </label>
+          </form>
+      </div>
+         <div class="header_text"><a href="http://www.wozaixianshang.com/">官方微博</a> | <a href="http://blog.wozaixianshang.com/">博客</a></div>    <div class="clr"></div>
+   <div class="block_header_form">
+      <div class="logo"><a href="index.html"><img src="images/logo.gif" width="165" height="69" border="0" alt="logo" /></a></div>
+      <div style="float:right;">
+        <div class="menu">
+          <ul>
+            <li><a href="index.html"><span>主页</span></a></li>
+             <li><a href="services.html"><span>服务</span></a></li>                       
+            <li><a href="projects.html"><span>案例</span></a></li>
+            <li><a href="about.html"><span>关于我们</span></a></li>
+            <li><a href="contact.html" class="active"><span>联系我们</span></a></li>
+          </ul>
+        </div>
+        </div>
+        <div class="clr"></div>
+      </div>
+      <div class="slider2">
+        <h2>关于我们</h2>
+             </div>
+      <div class="clr"></div>
+      
+    </div>
+  </div>
+    <div class="body">
+    <div class="body_resize">
+    <div class="left">
+    <h2>关于我们</h2>
+    <p>加设计是加设计艺术工作室倾力打造的一个以网页模板，网页主题为核心的商务平台。 我们有着经验丰富，而且成熟的团队，我们专注于开发视觉精美，功能完善的原创中文网站主题和网站模板。 禁止拙劣的设计；禁止平庸的想法，这是我们严于律己的标准 。这个逆向思维的概念，时刻的提醒着我们，我们是拒绝拙劣平庸，拒绝敷衍，一定要用最好的想法和最用心的作风来证明我们的座右铭—-禁止拙劣！禁止平庸！ 工作室在这些年的不断发展中，积累了大量的视觉设计、程序开发、用户体验等一系列为企业客户服务的经验，坐到以客户为中心，做出符合客户需求的服务和产品。客户包括日本、北美、欧洲、澳大利亚等海外地区，并受到这些客户的肯定和鼓励。我们会再接再厉，不断成长，为您做出更好的更贴心的产品和服务。 </p>
+    <p>我们致力于开发全球最流行的建站程序—加设计 的原创中文主题和中文模板，这是一种非常具有优势的建站程序，上万种风格各异的漂亮主题，几十万的格式功能插件，让您的网站几乎无所不能。加设计独特的程序构架，对搜索引擎非常友好，标签{tage）的使用，更加能够轻易的被搜索引擎抓取到。 付费的网站主题（模板）是一种高效快捷的建站方式，能够为您节约大量的成本，这些成本包括繁复的开发流程，反复拖延的项目周期，与开发公司的痛苦周旋以及大笔的资金。 你不必担心我们的网站模板（主题）会象街边地摊货似地劣质商品，又或者全英文头疼的后台操作，我们的设计师专注于做出视觉精美的网站模板（主题），并且致力将好的英文资源翻译成为简单易懂中文文字，还有我们亲自操作之后写出的大量详细教程，即使是一个网络小白，也能轻易的驾驭这些网站模板（主题）。</p>
+    </div>
+    <div class="right">
+    <h2>联系方式</h2>
+    <p>在这里，获取最快的联系方式 </p>
+    <p class="grey"><strong>电话：</strong> +123456789<br />
+      <strong>传真：</strong> +123456789<br />
+      <strong>邮箱：</strong> company@domainname.com </p>
+    <p class="grey">&nbsp;</p>
+    <img src="images/twitter.jpg" width="82" height="49" alt="img" />
+    <p>官方微博</p><p class="blye"> weibo.com/547767315</p>
+    </div>
+      <div class="clr"></div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+    <div class="footer">
+    <div class="footer_resize">
+      <p class="leftt">Copyright © wozaixianshang.com. All Rights Reserved<br />
+        <a href="inedx.html">主页</a> | <a href="#">联系我们</a> | <a href="#">RSS </a></p>
+      <p class="rightt">Design by <a href="http://wozaixianshang.com/">wozaixianshang.com</a></p>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+</body>
+</html>

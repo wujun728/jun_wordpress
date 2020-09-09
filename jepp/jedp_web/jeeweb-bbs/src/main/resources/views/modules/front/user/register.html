@@ -1,0 +1,96 @@
+<% layout('../layouts/layout.html', {
+title: '注册',
+page: 'user',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop">
+  <div class="fly-panel fly-panel-user" pad20>
+    <div class="layui-tab layui-tab-brief" lay-filter="user">
+      <ul class="layui-tab-title">
+        <li><a href="${ctx}/user/login">登入</a></li>
+        <li class="layui-this">注册</li>
+      </ul>
+      <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+        <div class="layui-tab-item layui-show">
+          <div class="layui-form layui-form-pane">
+            <form method="post">
+              <div class="layui-form-item">
+                <label for="L_phone" class="layui-form-label">手机</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_phone" name="phone" required="" lay-verify="phone" autocomplete="off" class="layui-input" />
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_vercode" class="layui-form-label">图形码</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_imagecode" name="imagecode" required="" lay-verify="required" autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid" style="padding: 0!important;">
+                  <span style="color: #c00;"><img id="img_jcaptcha"  src="/jcaptcha.jpg" width="100" height="40" /></span>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_vercode" class="layui-form-label">验证码</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_vercode" name="vercode" required="" lay-verify="required" placeholder="请输入手机短信验证码" autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid" style="padding: 0!important;">
+                  <button type="button" class="layui-btn layui-btn-normal" id="FLY-getvercode">获取验证码</button>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_realname" class="layui-form-label">昵称</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_realname" name="realname" required="" lay-verify="required" autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                  你在社区的名字
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_pass" class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                  <input type="password" id="L_pass" name="pass" required="" lay-verify="required" autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                  6到16个字符
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                  <input type="password" id="L_repass" name="repass" required="" lay-verify="required" autocomplete="off" class="layui-input" />
+                </div>
+              </div>
+              <div class="layui-form-item" style="position: relative; left: -10px; height: 32px;">
+                <input type="checkbox" name="agreement" lay-skin="primary" title="" checked="" />
+                <a href="/instructions/terms.html" target="_blank" style="position: relative; top: 4px; left: 5px; color: #999;">同意用户服务条款</a>
+              </div>
+              <div class="layui-form-item">
+                <button class="layui-btn" alert="1" lay-filter="*" lay-submit="">立即注册</button>
+              </div>
+              <div class="layui-form-item fly-form-app">
+                <span>或者直接使用社交账号快捷注册</span>
+                <a href="/app/qq" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
+                <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% } %>
+<script>
+layui.config({
+  version: "3.0.0"
+  ,base: '${staticPath}/mods/'
+}).extend({
+  fly: 'index'
+}).use('fly');
+</script>

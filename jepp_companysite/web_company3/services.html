@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Power House</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]><link rel="stylesheet" media="all" type="text/css" href="css/ie7.css" />
+<![endif]-->
+<!--[if IE 8]><link rel="stylesheet" media="all" type="text/css" href="css/ie8.css" />
+<![endif]-->
+<link href="fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+<!--slidercss-->
+<link rel="stylesheet" href="css/basic-jquery-slider.css" />
+<script src="js/jquery-1.6.2.min.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" src="js/pie.js" language="javascript"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<style type="text/css">
+ul.bjqs h1, ol.bjqs-markers li a, #client_speek .first_testi .testi_bg, #client_speek .second_testi .testi_bg, #client_speek .third_testi .testi_bg {
+	behavior: url("js/PIE.htc") !important;
+}
+#ServiceHeader2, #ServiceHeader3, #ServiceHeader4 {
+	display:none;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+/* Hide form input values on focus*/
+$('input:text').each(function(){
+var txtval = $(this).val();
+$(this).focus(function(){
+if($(this).val() == txtval){
+$(this).val('')
+}
+});
+$(this).blur(function(){
+if($(this).val() == ""){
+$(this).val(txtval);
+}
+});
+});
+});
+</script>
+
+</head>
+
+<body>
+<!--Header Start Here-->
+<div id="header">
+  <div id="top_header">
+    <div class="center_frame">
+      <div class="top">
+        <form name="search" method="post" action="">
+          <div class="search">
+            <input type="text" value="Search" />
+            <a href="default.htm"></a> </div>
+        </form>
+        <div class="language"> <a href="#" class="english active">&nbsp;</a> <a href="#" class="german">&nbsp;</a> <a href="#" class="spanish">&nbsp;</a> </div>
+        <div class="login"> <a href="login.html" class="login_img">&nbsp;</a> <a href="register.html" class="register">&nbsp;</a> </div>
+      </div>
+    </div>
+  </div>
+  <!--Top Header End Here-->
+  <div id="logo_nav">
+    <div class="bg">
+      <div class="center_frame"> 
+        <!--Logo And Navigation Start Here-->
+        <div class="logo"> <a href="index.html"><img src="images/logo.png" alt=""  /></a> </div>
+        <ul id="navigation">
+          <li><a href="index.html"><span>Home</span></a></li>
+          <li><a href="about.html"><span>About</span></a></li>
+          <li><a href="#"><span>Project 84</span></a>
+            <ul>
+              <li> <a href="project.html" class="life">Life with P84</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_1">Always full power</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_2">Media access</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_3">Infinite creativity</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_4">How to install P84</a> </li>
+            </ul>
+          </li>
+          <li><a href="services.html"><span>Services</span></a></li>
+          <li><a href="contact.html"><span>Contact</span></a></li>
+          <li><a href="blog.html"><span>Blog</span></a></li>
+        </ul>
+        <!--Logo And Navigation End Here--> 
+        <!--CHANGE ONLY THIS PART HERE--> 
+        
+        <!--Services Top Start Here -->
+        <div id="services">
+          <h1>We provide many services besides Project 84</h1>
+          <div id="service_besides">
+            <div class="icon_center">
+              <div class="services_icon"> <img src="images/menu-hover.png" class="hoverimage" alt="" border="0" usemap="#Map"  />
+                <map name="Map" id="Map">
+                  <area shape="poly" id="area-1" coords="159,35,96,95,158,155,174,139,182,118,183,97,183,78,180,62,173,48" href="#" alt="" />
+                  <area shape="poly" id="area-2" coords="95,101,153,158,133,173,117,181,103,181,84,183,70,181,59,177,45,172,40,165,35,159,35,159" href="#" alt="" />
+                  <area shape="poly" id="area-3" coords="94,98,31,159,13,129,5,99,8,72,18,50,30,37,33,33" href="#" alt="" />
+                  <area shape="poly" id="area-4" coords="96,93,34,32,51,16,77,9,95,10,110,10,128,19,144,27,157,33" href="#" alt="" />
+                </map>
+              </div>
+              <!--Changeable Divs on hover START-->
+              <div class="service_header_text" id="ServiceHeader1">
+                <h6>App developer</h6>
+                <p>We've been working with Apple for the last year and we're very pleased with our collaboration. This Thursday we signed yet another contract to develop more award winning apps for and with them.<br />
+                  <br />
+                  We're also available for private projects so please don't hesistate to contact us.</p>
+              </div>
+              <div class="service_header_text" id="ServiceHeader2">
+                <h6>App developer</h6>
+                <p>We've been working with Apple for the last year and we're very pleased with our collaboration. This Thursday we signed yet another contract to develop more award winning apps for and with them.<br />
+                  <br />
+                  We're also available for private projects so please don't hesistate to contact us.</p>
+              </div>
+              <div class="service_header_text" id="ServiceHeader3">
+                <h6>App developer</h6>
+                <p>We've been working with Apple for the last year and we're very pleased with our collaboration. This Thursday we signed yet another contract to develop more award winning apps for and with them.<br />
+                  <br />
+                  We're also available for private projects so please don't hesistate to contact us.</p>
+              </div>
+              <div class="service_header_text" id="ServiceHeader4">
+                <h6>App developer</h6>
+                <p>We've been working with Apple for the last year and we're very pleased with our collaboration. This Thursday we signed yet another contract to develop more award winning apps for and with them.<br />
+                  <br />
+                  We're also available for private projects so please don't hesistate to contact us.</p>
+              </div>
+              <!--Changeable Divs on hover END--> 
+            </div>
+          </div>
+        </div>
+        <!--Services Top Start Here --> 
+        <!--CHANGE ONLY UPERE PART IN INNER PAGES--> 
+      </div>
+    </div>
+  </div>
+</div>
+<!--Header End Here--> 
+<!--slider start here--> 
+
+<!--Wrapper Start Here-->
+<div id="wrapper"><!--Top Wrapper End Here--> 
+  <!--Main Contant Start Here-->
+  <div id="main_contant"> 
+    <!--Change Inner Page Here-->
+    <div id="service_pricing">
+      <div class="center_frame">
+        <div id="service_details"> 
+          <!--First Div -->
+          <div class="service_details"> <img src="images/serivice_brush.png" alt="" />
+            <h6>Graphic services</h6>
+            <ul>
+              <li><strong>Website design</strong><em>Wordpress, CMS, PSD templates &amp; eCommerce</em></li>
+              <li><strong>Logotypes</strong><em>The first 2 revisions are free</em></li>
+              <li><strong>Flyers &amp; posters</strong><em>We use all the standard sizes - easy to print</em></li>
+            </ul>
+            <span>&#36;150 USD per hour <img src="images/service_sep_1.png" alt=""  /> </span> <a href="#" class="button_service">LET'S GET STARTED</a> </div>
+          <!--Second Div-->
+          <div class="service_details"> <img src="images/service_travel.png" alt="" />
+            <h6>Travel services</h6>
+            <ul>
+              <li><strong>Around the world</strong><em>Travel around the world in 8 countries</em></li>
+              <li><strong>Charter tours</strong><em>Travel on a big boat</em></li>
+              <li><strong>Interrail</strong><em>Visit all of Europe by train</em></li>
+            </ul>
+            <span>Contact us for prices <img src="images/service_sep_1.png" alt=""  /> </span> <a href="#" class="button_service">I WANT TO TRAVEL</a> </div>
+          <!--Thired Div-->
+          <div class="service_details"> <img src="images/service_app.png" alt="" />
+            <h6>App services</h6>
+            <ul>
+              <li><strong>Planning</strong><em>First we resserach and plan your app</em></li>
+              <li><strong>Designing</strong><em>We then start working on the design</em></li>
+              <li><strong>Implementing</strong><em>Then we code it and publish it</em></li>
+            </ul>
+            <span>&#36;200 USD per hour <img src="images/service_sep_1.png" alt=""  /> </span> <a href="#" class="button_service">DEVELOP MY APP</a> </div>
+          <!--Change Before Here--> 
+        </div>
+      </div>
+    </div>
+    <!--Change Inner Page Before--> 
+    <!--Testimonal Start Here-->
+    <div id="testimonal">
+      <div class="center_frame">
+        <h1>Testimonials</h1>
+        <div class="test_title"> <img src="images/service_seprater.png" alt=""  />
+          <p>Still in doubt about whether to choose our company? Why don't you see what some<br />
+            of our satisfied customers has to say. We promise you it's worth it.</p>
+          <img src="images/service_seprater.png" alt=""  /> </div>
+        <!-- Client Speek Start here-->
+        <div id="client_speek"> 
+          <!--First Client-->
+          <div class="first_testi">
+            <div class="testi_bg">
+              <ul>
+                <li>
+                  <p> I just couldn't believe it when I first tried the ingenious Project 84. It was an unbelievable experience that I want everybody around the world to try. I highly recommend PowerHouse and its services. </p>
+                  <div class="client_name"> <strong>John Anderson</strong> <span>CEO of ThisAndThat</span> </div>
+                </li>
+              </ul>
+            </div>
+            <img src="images/service_testi_bottom_arrow.png" alt=""  /> </div>
+          <!--Second Client-->
+          <div class="second_testi">
+            <div class="testi_bg">
+              <ul>
+                <li>
+                  <p> The travel agency is incredible. We got a trip to Hawaii for just under $500 USD and the hotel was perfect. I can't point out one bad thing about PowerHouse because everything just went so smoothly I could hardly believe it.. I'm used to being screwed by companies but this time I'm just happy. </p>
+                  <div class="client_name"> <strong>Sara O'Neil</strong> <span>Random citizen</span> </div>
+                </li>
+              </ul>
+            </div>
+            <img src="images/service_testi_bottom_arrow.png" alt=""  /> </div>
+          <!--Third Client-->
+          <div class="third_testi">
+            <div class="testi_bg">
+              <ul>
+                <li>
+                  <p> Developing my app is the best damn thing I didn't do myself. This company did a marvelous job. </p>
+                  <div class="client_name"> <strong>Jack Masterson</strong> <span>Truck driver with a lot of ideas</span> </div>
+                </li>
+              </ul>
+            </div>
+            <img src="images/service_testi_bottom_arrow.png" alt=""  /> </div>
+        </div>
+        <!-- Client Speek End here--> 
+      </div>
+    </div>
+    <!--Testimonal End Here--> 
+  </div>
+  <!-- Main Contant End Here --> 
+</div>
+<!--Wrapper End Here-->
+<div id="footer">
+  <div id="footer1">
+    <div id="fbox1">
+      <h2>Browse</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="default.htm">Project 84</a>
+          <ul class="fsub-menu">
+            <li><a href="project.html">Life with P84</a></li>
+            <li><a href="#">Always full power</a></li>
+            <li><a href="#">Media access</a></li>
+            <li><a href="#">Infinite creativity4</a></li>
+            <li><a href="#">How to install P84</a></li>
+          </ul>
+        </li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Frequently Asked Questions</a>
+          <ul class="fsub-menu">
+            <li><a href="#">Top 10 Questions</a></li>
+            <li><a href="#">Is it safe?</a></li>
+            <li><a href="#">What's the procedure like?</a></li>
+            <li><a href="#">How much does it cost?</a></li>
+            <li><a href="#">What if I die?</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Sitemap</a> </li>
+        <li><a href="#">Job Opportunities</a></li>
+        <li><a href="#">Advertisement</a></li>
+      </ul>
+    </div>
+    <div id="fbox2">
+      <h2>Connect with us</h2>
+      <div class="share"> <a href="../../../www.facebook.com/default.htm" class="facebook">&nbsp;</a> <a href="../../../www.twitter.com/default.htm" class="twitter">&nbsp;</a> <a href="#" class="skype">&nbsp;</a> <a href="#" class="in">&nbsp;</a> <a href="#" class="email">&nbsp;</a> </div>
+      <form name="signup" method="post" action="">
+        <div class="newsletter">
+          <h2>Join our newsletter</h2>
+          <input name="" type="text" value="Enter you Emails" />
+          <input name="" type="submit" />
+          <a href="#">Click here to unsubscribe</a> </div>
+      </form>
+    </div>
+    <div id="fbox3"> <img src="images/footer-pic.png" width="92" height="214" alt="" /> <span>PowerHouse Corporation<br />
+      1534 Hi Street, Santa Felicia, CA 90563</span> </div>
+  </div>
+  <div id="copyrights">
+    <div>&copy; Copyright 2012 PowerHouse Corporation, All Rights Reserved</div>
+  </div>
+</div>
+<script  type='text/javascript'>
+$(function() {
+    $("#area-1").mouseover(function() {
+            var hoverimg = "images/menu-hover1.png";
+			$(".hoverimage").attr("src", hoverimg); 
+			
+			$("#ServiceHeader1").hide(); 
+			$("#ServiceHeader2").hide(); 
+			$("#ServiceHeader3").hide(); 
+			$("#ServiceHeader4").hide(); 
+			
+			$("#ServiceHeader1").show("slow"); 
+			
+			           
+        })
+        .mouseout(function() {
+            $(".hoverimage").attr("src", "images/menu-hover.png");
+        });
+		
+		 $("#area-2").mouseover(function() {
+            var hoverimg = "images/menu-hover2.png";
+			$(".hoverimage").attr("src", hoverimg); 
+			
+			$("#ServiceHeader1").hide(); 
+			$("#ServiceHeader2").hide(); 
+			$("#ServiceHeader3").hide(); 
+			$("#ServiceHeader4").hide(); 
+			
+			$("#ServiceHeader2").show("slow");            
+        })
+        .mouseout(function() {
+            $(".hoverimage").attr("src", "images/menu-hover.png");
+        });
+		$("#area-3").mouseover(function() {
+            var hoverimg = "images/menu-hover3.png";
+			$(".hoverimage").attr("src", hoverimg);            
+			$("#ServiceHeader1").hide(); 
+			$("#ServiceHeader2").hide(); 
+			$("#ServiceHeader3").hide(); 
+			$("#ServiceHeader4").hide(); 
+			
+			$("#ServiceHeader3").show("slow"); 
+        })
+        .mouseout(function() {
+            $(".hoverimage").attr("src", "images/menu-hover.png");
+        });
+		  $("#area-4").mouseover(function() {
+            var hoverimg = "images/menu-hover4.png";
+			$(".hoverimage").attr("src", hoverimg);            
+			$("#ServiceHeader1").hide(); 
+			$("#ServiceHeader2").hide(); 
+			$("#ServiceHeader3").hide(); 
+			$("#ServiceHeader4").hide(); 
+			
+			$("#ServiceHeader4").show("slow"); 
+        })
+        .mouseout(function() {
+            $(".hoverimage").attr("src", "images/menu-hover.png");
+        });
+});
+</script>
+
+</body>
+</html>

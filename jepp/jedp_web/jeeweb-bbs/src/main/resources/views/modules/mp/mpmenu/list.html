@@ -1,0 +1,28 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@include file="/WEB-INF/webpage/common/taglibs.jspf"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>菜单列表</title>
+  <meta name="decorator" content="list"/>
+</head>
+<body title="菜单">
+<#grid:grid id="mpMenuGrid" async="true" treeGrid="true"  expandColumn="name"  url="${adminPath}/mp/mpmenu/ajaxTreeList">
+	<#grid:column label="sys.common.key" hidden="true"   name="id" width="100"/>
+    <#grid:column label="机构名称"  name="name" />
+    <#grid:column label="动作类型"  name="actType" />
+    <#grid:column label="消息类型"  name="msgType" />
+    <#grid:column label="排序"  name="sort" />
+    <#grid:column label="模版ID"  name="mid" />
+    <#grid:column label="菜单标识"  name="flag" />
+    <#grid:column label="sys.common.opt"  name="opt" formatter="button" width="100"/>
+	<#grid:button groupname="opt" function="delete"/>
+	<#grid:toolbar function="add"/>
+	<#grid:toolbar function="update"/>
+	<#grid:toolbar function="delete"/>
+	
+	<#grid:toolbar function="search"/>
+	<#grid:toolbar function="reset"/>
+</#grid:grid>
+</body>
+</html>

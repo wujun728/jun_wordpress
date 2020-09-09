@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jeeweb.bbs.modules.product.mapper.ProductPurchaseMapper" >
+
+    <sql id="Base_Column_List" >
+        DISTINCT
+        po.id,
+        po.product_id as productId,
+        po.name,
+        po.create_date as createDate,
+        po.update_date as updateDate,
+        po.uid as uid,
+        po.price as price,
+        po.expiry_time as expiryTime,
+        p.id as "product.id",
+        p.name as "product.name",
+        p.description as "product.description",
+        p.version as "product.version",
+        p.authorization_period as "product.authorizationPeriod",
+        p.total_amount as "product.totalAmount",
+        p.discount_amount as "product.discountAmount",
+        p.discount_description  as "product.discountDescription",
+        user.id as "user.id",
+        user.realname as "user.realname",
+        user.username as "user.username",
+        user.portrait as "user.portrait",
+        user.email as "user.email",
+        user.phone as "user.phone",
+        user.vip_level as "user.vipLevel",
+        user.auth as "user.auth",
+        user.auth_info as "user.authInfo",
+        user.status as "user.status"
+    </sql>
+
+
+    <select id="selectProductPurchaseList" resultType="cn.jeeweb.bbs.modules.product.entity.ProductPurchase">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM product_purchase po
+        LEFT JOIN product p on po.product_id = p.id
+        LEFT JOIN sys_user user on po.uid = user.id
+        <if test="ew.sqlSegment != '' and ew.sqlSegment != null">
+            <where>
+                ${ew.sqlSegment}
+            </where>
+        </if>
+    </select>
+
+</mapper>

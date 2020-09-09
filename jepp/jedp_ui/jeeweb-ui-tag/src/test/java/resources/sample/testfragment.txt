@@ -1,0 +1,413 @@
+<%if(gridShowType!=null&&gridShowType=='list'){%>
+    <div>
+		<!-- 查询条件 -->
+		<div class="row">
+			<div id="${id}GridQuery" class="col-sm-12">
+			 	<div class="form-inline">
+			 	   <%for(queryItem in queryList){%>
+			 	     <div class="form-group">
+			 	          <%if(showQueryLabel!=null&&showQueryLabel&&queryItem.queryMode!="hidden"){%>
+			 	          <label class="control-label">${queryItem.label}：</label>
+			 	          <%}%>
+			 	          <%if(queryItem.queryMode=='hidden'){%>
+			 	          <input type="hidden" placeholder="${queryItem.label}" <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%>${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%>/>
+                          <%}%>
+                          <%if(queryItem.queryMode=='input'){%>
+                          <${queryItem.queryMode}  type="text" placeholder="${queryItem.label}"  <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%>/>
+                          <%}%>
+                          <%if(queryItem.queryMode=='select'){%>
+                          <${queryItem.queryMode} <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%>>
+                               <option value ="">请选择</option>
+                               <% for(dict in columnDictMap[queryItem.dict]){%>
+                                 <option value ="${dict.value!}">${dict.label!}</option>
+                               <%}%>
+                          </${queryItem.queryMode}>
+                          <%}%>
+                          <%if(queryItem.queryMode=='radio'){%>
+                            <% for(dict in columnDictMap[queryItem.dict]){%>
+                               <label><input  <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%>  type="radio" value="${dict.value!}" />${dict.label!} </label>
+                            <%}%>
+                          <%}%>
+                          <%if(queryItem.queryMode=='checkbox'){%>
+                            <% for(dict in columnDictMap[queryItem.dict]){%>
+                               <label><input  <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%>  type="checkbox" value="${dict.value!}" />${dict.label!} </label>
+                            <%}%>
+                          <%}%>
+                          <%if(queryItem.queryMode=='date'){%>
+                             <%if(queryItem.condition=='between'){%>
+                             <div id="${queryItem.name!?replace(".","_")}_date"  class="input-daterange input-group">
+                                    <input <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%> />
+                                    <span class="input-group-addon">到</span>
+                                    <input <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%> />
+                             </div>
+                             <%}else{%>
+                             <div id="${queryItem.name!?replace(".","_")}_date" class="input-group date">
+                                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                   <input <% for(entry in queryItem){var queryItemKey = entry.key;%><%if(queryItemKey!=null&&queryItemKey!='label'&&queryItemKey!='queryMode'&&queryItemKey!=''){%> ${queryItemKey}='${queryItem[queryItemKey]}'<%}%><%}%>>
+                             </div>
+                              <%}%>
+                          <%}%>
+			 	     </div>
+			 	   <%}%>
+				</div>
+				<br/>
+			</div>
+		</div>
+		<!-- 工具栏 -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="pull-left">
+				   <% for(toolbarItem in toobarList){%>
+				       <%if(toolbarItem.layout=='left'){%>
+					      <button   class="btn btn-sm <%if(toolbarItem.btnclass?exists&&toolbarItem.btnclass!=''){%>${toolbarItem.btnclass}<%}else{%>btn-info<%}%>" <% for(entry in toolbarItem.dynamicAttributes){var toolbarItemKey = entry.key;%>${toolbarItemKey}='${toolbarItem.dynamicAttributes[toolbarItemKey]}'<%}%>
+					       <%if(toolbarItem.function?exists&&toolbarItem.function!=''){%>
+				           		  <%if(toolbarItem.function=='delete'){%>
+				               		  onclick="batchDelete('${toolbarItem.title!}','${toolbarItem.url!}','${id}Grid')"
+				                  <%}else if(toolbarItem.function=='toolbarSelectConfirm'){%>
+				                  	  onclick="${toolbarItem.function!}('${toolbarItem.title!}','${toolbarItem.url!}','${id}Grid','${toolbarItem.tipMsg!}')"
+				                  <%}else{%>
+				                      onclick="${toolbarItem.function!}('${toolbarItem.title!}','${toolbarItem.url!}','${id}Grid','${toolbarItem.winwidth!}','${toolbarItem.winheight!}')"
+				                 <%}%>
+				            <%}else if(toolbarItem.onclick!=''){%>
+				                      onclick="${toolbarItem.onclick}"
+					       <%}%>><i class="fa ${toolbarItem.icon!}"></i> ${toolbarItem.title!}</button>
+				      <%}%>
+				    <%}%>
+				</div>
+				<div class="pull-right">
+				    <% for(toolbarItem in toobarList){%>
+				       <%if(toolbarItem.layout=='right'){%>
+					      <button class="btn btn-sm <%if(toolbarItem.btnclass?exists&&toolbarItem.btnclass!=''){%>${toolbarItem.btnclass}<%}else{%>btn-info<%}%>" <% for(entry in toolbarItem.dynamicAttributes){var toolbarItemKey = entry.key;%>${toolbarItemKey}='${toolbarItem.dynamicAttributes[toolbarItemKey]}'<%}%>
+					        <%if(toolbarItem.function?exists){%>
+					          onclick="${toolbarItem.function!}('${id}Grid')"
+					        <%}%>><i class="fa ${toolbarItem.icon!}"></i> ${toolbarItem.title!}</button>
+				      <%}%>
+				    <%}%>
+				</div>
+			</div>
+		</div>
+		<div class="jqGrid_wrapper uadmin-grid-margin" >
+		        <table id="${id}Grid"></table>
+		        <div id="pager_${id}"></div>
+		</div>
+	</div>
+	<%}else if(gridShowType!=null&&gridShowType=='form'){%>
+            <button class="btn btn-white btn-sm" onclick="return addRowData('${id}Grid')"><i class="fa fa-plus"> 增加</i></button>
+            <button class="btn btn-white btn-sm" onclick="return delRowData('${id}Grid')"><i class="fa fa-minus"> 删除</i> </button>
+ 			<div class="jqGrid_wrapper">
+               <table id="${id}Grid"></table>
+	           <div id="pager_${id}"></div>
+            </div>
+	<%}else{%>
+
+	<%}%>
+
+	<!-- 查询的列表 -->
+	<input type="hidden" id="query${id}Fields" name="query${id}Fields" value="<% for(columnItem in columnList){%><%if(!columnItem.formatter!=null||"button" != columnItem.formatter){%>${columnItem.name},<%}%><%}%>">
+
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	    	 $.jgrid.defaults.width = 960;
+			 $.jgrid.defaults.responsive = true;
+			 $.jgrid.defaults.styleUI = 'Bootstrap';
+			 $.jgrid.ajaxOptions.type = 'post';
+	    	 iChecks();
+	    	 init${id}Table();
+	    	 init${id}Date();
+	    });
+	    <%if(editable!=null&&editable){%>
+    	//数组变量
+    	<% for(entry in columnDictMap){var dictKey = entry.key;%>
+		var ${dictKey}SelectEditoptions={
+		   value:"<% for(dict in columnDictMap["dictKey"]){%>${dict.value!}:${dict.label!}<%if(dict_has_next){%>;<%}%><%}%>"
+		}
+		<%}%>
+        <%}%>
+	    /**
+	    *初始化表单
+	    */
+	    function init${id}Table() {
+		    var queryParams = {};
+			var queryFields = $('#query${id}Fields').val();
+			queryParams['queryFields'] = queryFields;
+
+			var colModel=[];
+            <% for(column in columnList){%>
+	        var col${column.name?cap_first?replace(".","_")}Item={label: '${column.label}', name: '${column.name}', <%if(column.align!=null&&column.align!=''){%>align: '${column.align}',<%}%><%if(column.hidden!=null&&column.hidden){%>hidden:${column.hidden},<%}%><%if(column.formatter!=null&&column.formatter!=''){%><%if(column.formatter=='date'||column.formatter=='integer'||column.formatter=='currency'||column.formatter=='email'||column.formatter=='link'){%>formatter:'${column.formatter}'<%}else{%>formatter:${id}${column.name?cap_first?replace(".","_")}Formatter<%}%>,<%}%><%if(column.formatoptions!=null){%>formatoptions: ${column.formatoptions},<%}%><%if(column.width!=null){%>width: ${column.width},<%}%><%if(column.editable!=null&&column.editable){%>editable:${column.editable},edittype:"${column.edittype!}",<%if(column.editoptions!=null&&column.editoptions!=''){%>editoptions:<%if(column.editoptions=='date'){%>{dataInit: function (element) {$(element).datepicker({autoclose: true,format: '${column.editdateformat}',orientation : 'auto bottom'});}}<%}else{%>${column.editoptions}<%}%>,<%}%><%}%><%if(column.sortable!=null&&column.sortable){%>sortable:${column.sortable},<%}%><%if(column.editrules!=null&&column.editrules!=''){%>editrules:${editrules.editrules},<%}%><%if(column.datatype!=null&&column.datatype!=''&&(!column.editrules!=null||column.editrules=='')){%>editrules:{custom:true, custom_func:${id}${column.name?cap_first?replace(".","_")}Validate},<%}%> <%if(column.checkbox!=null&&column.checkbox){%>checkbox:${column.checkbox)}<%}%>,unformat:${id}UnFormatter};
+		    <%if(column.columnSettingCallback!=null&&column.columnSettingCallback!=''){%>
+            $.extend(col${column.name?cap_first?replace(".","_")}Item, typeof ${column.columnSettingCallback} == "function" && ${column.columnSettingCallback}());
+            <%}else{%>
+            <%if(column.columnSetting!=null&&column.columnSetting!=''){%>
+            $.extend(col${column.name?cap_first?replace(".","_")}Item, ${column.columnSetting});
+            <%}%>
+            <%}%>
+            colModel.push(col${column.name?cap_first?replace(".","_")}Item);
+            <%}%>
+
+			var settings={
+                postData: queryParams,
+                styleUI : 'Bootstrap',
+			    <%if(datatype!=null&&datatype!='local'){%>
+			    mtype: "${ajaxType}",
+			    url: "${url!}",
+			    prmNames:{//请求参数格式预处理
+			          page:"page.pn",
+			          rows:"page.size",
+			          sort:"sort",
+			          order: "order"
+			    },
+                <%}%>
+                datatype: "${datatype}",
+                <%if(initDatas!=null&&initDatas!=''){%>
+                data: ${initDatas},
+                <%}%>
+                colModel:colModel,
+                <%if(pageable!=null&&pageable){%>
+			    pageable: true,
+			    page: ${page},
+                rowNum: ${rowNum},
+                pager: "#pager_${id}",
+                <%}%>
+                <%if(sortable!=null&&sortable){%>
+                multiSort: ${multiSort},
+			    sortable: true,
+			    sortname: "${sortname}",
+			    sortorder: "${sortorder}",
+			    <%}%>
+			    multiselect: ${multiselect},
+			    //width: ${width},
+			    height: ${height},
+			    shrinkToFit: true,
+
+			    jsonReader: {//返回参数格式处理
+			        root: "results",
+			        page: "page",
+			        total: "totalPages",
+			        records: "total"
+			    },
+			    rownumbers: false,
+			    multikey: "true",
+			    autowidth: true,
+			    <%if(editable!=null&&editable){%>
+			    editurl: 'clientArray',
+			    onSelectRow: ${id}EditRow,
+			    <%}%>
+			    <%if(treeGrid!=null&&treeGrid){%>
+			    treeGrid: true,
+			    <%if(expandColumn!=null&&expandColumn!=''>
+			    ExpandColumn: "${expandColumn}",
+			    <%}%>
+			    treeGridModel: "adjacency",
+			    treeReader: {
+			        level_field: 'level',
+			        parent_id_field: 'parentId',
+			        leaf_field: 'leaf',
+			        expanded_field: 'expanded'
+			    },
+			    <%}%>
+            };
+            <%if(gridSettingCallback!=null&&gridSettingCallback!=''){%>
+            $.extend(settings, typeof ${gridSettingCallback} == "function" && ${gridSettingCallback}());
+            <%}else{%>
+            <%if(gridSetting!=null&&gridSetting!=''){%>
+            $.extend(settings, ${gridSetting});
+            <%}%>
+            <%}%>
+            $("#${id}Grid").jqGrid(settings);
+        };
+
+        <%if(editable!=null&&editable){%>
+        /**
+        *行内编辑
+        */
+        var ${id}LastSelection;
+        function ${id}EditRow(id) {
+                if (id && id !== ${id}LastSelection) {
+                    var grid = $("#${id}Grid");
+                    grid.jqGrid('saveRow',${id}LastSelection);
+                    grid.jqGrid('editRow',id, {keys:true, focusField: 4});
+                    ${id}LastSelection = id;
+                }
+        }
+        <%}%>
+
+     function init${id}Date(){
+        <%for(queryItem in queryList){%>
+	          <%if(queryItem.queryMode=='date'){%>
+	            <%if(queryItem.condition=='between'){%>
+                 $('#${queryItem.name!?replace(".","_")}_date').datepicker({
+				    todayBtn: "linked",
+				    keyboardNavigation: false,
+				    forceParse: false,
+				    calendarWeeks: true,
+				    autoclose: true
+			    });
+			    <%}else{%>
+			   $('#${queryItem.name!}_date').datepicker({
+				     keyboardNavigation: false,
+	                 forceParse: false,
+	                 autoclose: true
+			   });
+			  <%}%>
+	        <%}%>
+	    <%}%>
+	}
+	<% for(column in columnList){%>
+	<%if(column.formatter!=null){%>
+	function ${id}${column.name?cap_first?replace(".","_")}Formatter(value, options, row){
+	  try{
+	   <%if(column.formatter!=null&&"image" == column.formatter){%>
+		   if(value==undefined){
+		      return "";
+		   }
+		   var extendStyle="";
+		   <%if(column.imageWidth!=null){%>
+		   var imageWidth=${column.imageWidth};
+		   if(imageWidth!=undefined){
+		     extendStyle+="width='"+imageWidth+"'";
+		   }
+		   <%}%>
+		   <%if(column.imageHeight!=null){%>
+		   var imageHeight=${column.imageHeight};
+		   if(imageHeight!=undefined){
+		     extendStyle+="height='"+imageHeight+"'";
+		   }
+		   <%}%>
+		   var baseUrl='${appPath}';
+		   var imageHtml = "<img "+extendStyle+"  <%if(column.formatterClass!=null>class='${column.formatterClass}'<%}%>  src='" + value + "' originalValue='" + value + "' />";
+	       return imageHtml
+	   <%}%>
+	   <%if(column.formatter!=null&&"label" == column.formatter){%>
+	       if(value==undefined){
+		      return "";
+		   }
+		   var cellValue=value;
+		   <%if(column.dateformat!=null){%>
+		   try{
+		     var cellValueDate = new Date(cellValue);
+		     cellValue = cellValueDate.format("${column.dateformat}");
+		   }catch(err){}
+		   <%}%>
+		   <%if(column.formatterValue!=null){%>
+		   var formatterValue='${column.formatterValue}';
+		   if(formatterValue!=undefined){
+		      var formatterValues=formatterValue.split(";");
+		      for(var i =0;i<formatterValues.length;i++){
+				 var formatterItem = formatterValues[i];
+				 var labelValues=formatterItem.split(":");
+				 if(labelValues[0]==cellValue){
+				    cellValue=labelValues[1];
+				 }
+			  }
+		   }
+		   <%}%>
+		   <%if(column.prefix!=null){%>
+		   var prefix="${column.prefix}";
+		   if(prefix!=undefined){
+		   	 cellValue=prefix+cellValue;
+		   }
+		   <%}%>
+		   <%if(column.suffix!=null){%>
+		   var suffix="${column.suffix}";
+		   if(suffix!=undefined){
+		   	 cellValue=cellValue+suffix;
+		   }
+		   <%}%>
+		   <%if(column.formatterClass!=null){%>
+		   var cellClass="";
+		   var formatterClass="${column.formatterClass}";
+		   if(formatterClass!=undefined){
+		      var formatterClasss=formatterClass.split(";");
+		      for(var i =0;i<formatterClasss.length;i++){
+				 var formatterClassItem = formatterClasss[i];
+				 var styleValues=formatterClassItem.split(":");
+				 if(styleValues[0]==value){
+				   cellClass=styleValues[1];
+				 }
+			  }
+		   }
+		   <%}%>
+		   <%if(column.formatterColor!=null){%>
+		   var cellStyle="";
+		   var formatterColor="${column.formatterColor}";
+		   if(formatterColor!=undefined){
+		      var formatterColors=formatterColor.split(";");
+		      for(var i =0;i<formatterColors.length;i++){
+				 var formatterColorItem = formatterColors[i];
+				 var colorValues=formatterColorItem.split(":");
+				 if(colorValues[0]==value){
+				   cellStyle='color:'+colorValues[1];
+				 }
+			  }
+		   }
+		   <%}%>
+		   cellValue="<span <%if(column.formatterClass!=null> class='" + cellClass + "' <%}%><%if(column.formatterColor!=null> style='" + cellStyle + "' <%}%> originalValue='" +value + "'>" + cellValue + "</span>";
+		   return cellValue;
+	   <%}%>
+	   <%if(column.formatter!=null&&"button" == column.formatter){%>
+	         if(!row.id) {
+                 return '';
+             }
+	    	 var href="";
+	    	 <% for(buttonItem in buttonList){%>
+	            <%if( column.name== buttonItem.groupname){%>
+	                <%if(buttonItem.exp?exists){%>
+	                  if(${buttonItem.exp}){
+	                <%}%>
+	               		href +="<a href=\"#\" class=\"${buttonItem.outclass}\"<% for(entry in queryItem)  <% for(entry in buttonItem.dynamicAttributes){var buttonItemKey = entry.key;%>${buttonItemKey}=\"${buttonItem.dynamicAttributes[buttonItemKey]}\"<%}%>";
+				        <%if(buttonItem.onclick?exists){%>
+				           href +="onclick=\"${buttonItem.onclick}\"";
+				        <%}else{%>
+				            <%if(buttonItem.function?exists>
+				             	 <%if(buttonItem.function=='delete'>
+				               		  href +="onclick=\"deleteRowData('${buttonItem.title!}','${buttonItem.url!}','"+row.id+"','${id}Grid')\"";
+				                  <%}else if(buttonItem.function=='rowConfirm'){%>
+				                 	  href +="onclick=\"${buttonItem.function!}('${buttonItem.title!}','${buttonItem.url!}','"+row.id+"','${id}Grid','${buttonItem.tipMsg!}')\"";
+				                 <%}else{%>
+				                      href +="onclick=\"${buttonItem.function!}('${buttonItem.title!}','${buttonItem.url!}','${id}Grid','"+row.id+"','${buttonItem.winwidth!}','${buttonItem.winheight!}')\"";
+				                 <%}%>
+				            <%}%>
+				        <%}%>
+				        <%if(buttonItem.innerhtml?exists){%>
+				           href +=">${buttonItem.innerhtml!}</a>";
+				        <%}else{%>
+				           href +="><i class=\"${buttonItem.innerclass!}\"></i>&nbsp${buttonItem.title!}</a>&nbsp&nbsp";
+				        <%}%>
+				   <%if(buttonItem.exp?exists){%>
+				     }
+				   <%}%>
+	            <%}%>
+	    	 <%}%>
+	    	return href;
+	   <%}%>
+	   }catch(err){}
+	   return value;
+	}
+	<%}%>
+	<%}%>
+	function ${id}UnFormatter(value, options, cellObject) {
+	  try{
+	      var html=cellObject.innerHTML;
+	      var cellValue= $(html).attr("originalValue");
+		  return cellValue;
+	   }catch(err){}
+       return value;
+    }
+    <% for(column in columnList){%>
+	<%if(column.datatype!=null&&column.datatype!=''>
+	function ${id}${column.name?cap_first?replace(".","_")}Validate(value,colname){
+	  try{
+	      return validformJqgrid(value,"${column.datatype!}","${column.nullmsg!}","${column.errormsg!}");
+	   }catch(err){}
+       return [ true, "" ];
+    }
+    <%}%>
+	<%}%>
+	function iChecks()
+	{
+		$(".i-checks").iCheck({
+	           checkboxClass: 'icheckbox_square-green',
+	           radioClass: 'iradio_square-green',
+	       });
+	}
+    </script>

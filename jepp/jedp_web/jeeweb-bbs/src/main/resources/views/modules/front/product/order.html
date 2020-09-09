@@ -1,0 +1,108 @@
+<% layout('../layouts/layout.html', {
+title: '产品授权',
+page: 'bill',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop">
+    <div class="fly-panel layui-text">
+        <div class="fly-panel-title fly-filter">
+            产品授权
+        </div>
+        <div class="fly-panel-main">
+            <form class="layui-form" action="/product/buy/">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品：</label>
+                    <div class="layui-form-mid" style="float: none;">
+                        <a href="#" target="_blank">JeeWeb 快速开发平台</a>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">版本：</label>
+                    <div class="layui-input-block">
+                        <%
+                        var productVersionList = dictUtils.getDictList('productVersion');
+                        %>
+                        <%for(productVersion in productVersionList){%>
+                        <button type="button" class="fly-form-btn layui-btn layui-btn-primary <% if(product.version == productVersion.value){%>layui-this<%}%>" data-id="${productVersion.value}" data-type="change" data-required="true">${productVersion.label}</button>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">授权期限：</label>
+                    <div class="layui-input-block">
+                        <%
+                        var authorizationPeriodList = dictUtils.getDictList('authorizationPeriod');
+                        %>
+                        <%for(authorizationPeriod in authorizationPeriodList){%>
+                        <button type="button" class="fly-form-btn layui-btn layui-btn-primary <% if(product.authorizationPeriod == authorizationPeriod.value){%>layui-this<%}%>" data-id="${authorizationPeriod.value}" data-type="change" data-required="true">${authorizationPeriod.label}</button>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">您的选择：</label>
+                    <div class="layui-input-block">
+                        <div class="layui-form-mid">
+                            ${product.name}
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所需费用：</label>
+                    <div class="layui-input-block">
+                        <div class="layui-form-mid" id="LAY_price" style="font-size: 23px; color: #FF5722;">
+                            ￥${parseInt(product.totalAmount)}
+                        </div>
+                        <% if(product.totalAmount > product.discountAmount){%>
+                        <div class="layui-form-mid">
+                            <del>
+                                ${parseInt(product.discountAmount)}
+                            </del>
+                        </div>
+                        <div class="layui-clear"></div>
+                        <div style="padding: 10px; font-size: 12px; background-color: #f6f6f6; color: #FF5722;">
+                            <span style="">已自动为您省去￥${parseInt(product.totalAmount - product.discountAmount)}，优惠项：</span>
+                            <div class="layui-text" style="color: #FF5722; font-size: 12px;">
+                                ${product.discountDescription}
+                            </div>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">支付方式：</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="payType" value="alipay" title="" checked="" />
+                        <div lay-radio="">
+                            <i class="iconfont icon-alipay" title="支付宝" style="top: -1px;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="agreement" lay-skin="primary" title="" checked="" />
+                        <a href="javascript:;" id="FLY-bill-agreement" style="position: relative; top: 6px; left: 5px; color: #5FB878;">同意产品服务协议</a>
+                        <!--<a href="http://fly.layui.com/jie/26280/" target="_blank" style="position: relative; top: 6px; left: 5px; text-decoration: underline; color: #5FB878;">同意产品服务协议</a>-->
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="hidden" name="productId" value="${product.id}" />
+                        <button class="layui-btn layui-btn-danger" lay-submit="" lay-filter="orderPay">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<% } %>
+
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

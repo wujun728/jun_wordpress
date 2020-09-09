@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Power House</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]><link rel="stylesheet" media="all" type="text/css" href="css/ie7.css" />
+<![endif]-->
+<!--[if IE 8]><link rel="stylesheet" media="all" type="text/css" href="css/ie8.css" />
+<![endif]-->
+<link href="fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+<!--slidercss-->
+<link rel="stylesheet" href="css/basic-jquery-slider.css" />
+<script src="js/jquery-1.6.2.min.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" src="js/pie.js" language="javascript"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+
+<link rel="stylesheet" href="css/vslider.css" />
+<script type="text/javascript" src="js/jquery.vslider.js" ></script>
+<script type="text/javascript">
+$(function(){
+
+	$("#test").vSlider();
+	
+	});
+</script>
+<style type="text/css">
+ul.bjqs h1, ol.bjqs-markers li a {
+	behavior: url("js/PIE.htc") !important;
+}
+</style>
+<script src="js/jquery.hashchange.min.js" type="text/javascript"></script>
+<script src="js/jquery.easytabs.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript">
+    $(document).ready( function() {
+      $('#tab-container').easytabs();
+    });
+  </script>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			*   Examples - images
+			*/
+			$("a.example2").fancybox({
+				'overlayShow'	: false,
+				'transitionIn'	: 'elastic',
+				'transitionOut'	: 'elastic'
+			});
+
+			$("a[rel=example_group]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+		});		
+	</script>
+<script type="text/javascript">
+$(function(){
+/* Hide form input values on focus*/
+$('input:text').each(function(){
+var txtval = $(this).val();
+$(this).focus(function(){
+if($(this).val() == txtval){
+$(this).val('')
+}
+});
+$(this).blur(function(){
+if($(this).val() == ""){
+$(this).val(txtval);
+}
+});
+});
+});
+</script>
+</head>
+
+<body>
+<!--Header Start Here-->
+<div id="header">
+  <div id="top_header">
+    <div class="center_frame">
+      <div class="top">
+        <form name="search" method="post" action="">
+          <div class="search">
+            <input type="text" value="Search" />
+            <a href="default.htm"></a> </div>
+        </form>
+        <div class="language"> <a href="#" class="english active">&nbsp;</a> <a href="#" class="german">&nbsp;</a> <a href="#" class="spanish">&nbsp;</a> </div>
+        <div class="login"> <a href="login.html" class="login_img">&nbsp;</a> <a href="register.html" class="register">&nbsp;</a> </div>
+      </div>
+    </div>
+  </div>
+  <!--Top Header End Here-->
+  <div id="logo_nav">
+    <div class="bg">
+      <div class="center_frame"> 
+        <!--Logo And Navigation Start Here-->
+        <div class="logo"> <a href="index.html"><img src="images/logo.png" alt=""  /></a> </div>
+        <ul id="navigation">
+          <li><a href="index.html"><span>Home</span></a></li>
+          <li><a href="about.html"><span>About</span></a></li>
+          <li><a href="#"><span>Project 84</span></a>
+            <ul>
+              <li> <a href="project.html" class="life">Life with P84</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_1">Always full power</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_2">Media access</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_3">Infinite creativity</a> <span class="nav_line"></span></li>
+              <li> <a href="#" class="life_4">How to install P84</a> </li>
+            </ul>
+          </li>
+          <li><a href="services.html"><span>Services</span></a></li>
+          <li><a href="contact.html"><span>Contact</span></a></li>
+          <li><a href="blog.html"><span>Blog</span></a></li>
+        </ul>
+        <!--Logo And Navigation End Here--> 
+        <!--CHANGE ONLY THIS PART HERE-->        
+        <!--Extra Top Start Here -->
+        <div id="extra_page">
+          <div id="extra_slider">
+            <ul id="test">
+              <li> <img src="images/extra_img_slider.png" alt=""  />
+                <span><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+              </li>
+              <li> <img src="images/extra_img_slider.png" alt=""  />
+                <span><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+              </li>
+              <li> <img src="images/extra_img_slider.png" alt=""  />
+                <span><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+              </li>
+              <li> <img src="images/extra_img_slider.png" alt=""  />
+                <span><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+              </li>
+              <li> <img src="images/extra_img_slider.png" alt=""  />
+                <span><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--Extra Top Start Here --> 
+        <!--CHANGE ONLY UPERE PART IN INNER PAGES--> 
+      </div>
+    </div>
+  </div>
+</div>
+<!--Header End Here--> 
+<!--Wrapper Start Here-->
+<div id="wrapper"> 
+  <!--Extra Content Start Here-->
+  <div id="extra_content">
+    <div class="center_frame"> 
+      <!--Extart Page Categories Start-->
+      <div id="extra_cat">
+        <h1>Categories</h1>
+        <!--Extra Page Tab Start-->
+        <div id="tab-container" class='tab-container'>
+          <ul class='etabs'>
+            <li class='tab'><a href="#tabs1-all">All</a></li>
+            <li class='tab'><a href="#tabs1-project">Project 84</a></li>
+            <li class='tab'><a href="#tabs1-nature">Nature</a></li>
+            <li class='tab'><a href="#tabs1-architecture">Architecture</a></li>
+            <li class='tab'><a href="#tabs1-animals">Animals</a></li>
+          </ul>
+          <!--Tab Contenat Start Here-->
+          <div class='panel-container'> 
+            <!--First Tab-->
+            <div id="tabs1-all">
+              <ul class="extra_tab_content">
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_1.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_2.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_3.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_4.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_5.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_6.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_7.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_8.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_9.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+              </ul>
+            </div>
+            <!--Secont Tab-->
+            <div id="tabs1-project">
+              <ul class="extra_tab_content">
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_1.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_2.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_3.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_4.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_5.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+              </ul>
+            </div>
+            <!--Thired Tab-->
+            <div id="tabs1-nature">
+              <ul class="extra_tab_content">
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_1.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_2.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_3.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+              </ul>
+            </div>
+            <!--Fourth Tab-->
+            <div id="tabs1-architecture">
+              <ul class="extra_tab_content">
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_1.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_2.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_3.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_4.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_5.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+              </ul>
+            </div>
+            <!--Fifth Tab-->
+            <div id="tabs1-animals">
+              <ul class="extra_tab_content">
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_1.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_2.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_3.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_4.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_5.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_6.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+                <li> <a class="example2" href="images/extra_img_slider.png"><img src="images/extra_img_7.png" alt="" /></a> <strong>Headline title goes here</strong>
+                  <p>Lorem ipsum dolor sit amet, lojigu consectetur adipisicing elit, sed  tempor incididunt ut labore.</p>
+                </li>
+              </ul>
+            </div>
+            <!--Add Tab Before Here--> 
+          </div>
+          <!--Tab Contenat End Here--> 
+        </div>
+        <!--Extra Page Tab End--> 
+      </div>
+      <!--Extart Page Categories End--> 
+      <!--Extrat Page Navigation Start-->
+      <div id="extra_page_nav">
+        <ul>
+          <li><a href="#">Prev</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">&middot;&middot;&middot;&middot;</a></li>
+          <li><a href="#">Next</a></li>
+        </ul>
+      </div>
+      <!--Extra Page Navigation ENd--> 
+    </div>
+  </div>
+  <!--Extra Content End Here--> 
+  <!--Extra TestiMonal Start Here-->
+  <div id="extra_testimonial">
+    <div class="center_frame">
+      <div id="extra_testi">
+        <ul>
+          <li>
+            <p><img src="images/extra_img_10.png" alt=""  /> <strong>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda.</strong><br />
+              Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. </p>
+            <span>Kangaroo <em>PowerHouse</em></span> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--Extra TestiMonal End Here--> 
+  
+</div>
+<!--Wrapper End Here-->
+<div id="footer">
+  <div id="footer1">
+    <div id="fbox1">
+      <h2>Browse</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="default.htm">Project 84</a>
+          <ul class="fsub-menu">
+            <li><a href="project.html">Life with P84</a></li>
+            <li><a href="#">Always full power</a></li>
+            <li><a href="#">Media access</a></li>
+            <li><a href="#">Infinite creativity4</a></li>
+            <li><a href="#">How to install P84</a></li>
+          </ul>
+        </li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Frequently Asked Questions</a>
+          <ul class="fsub-menu">
+            <li><a href="#">Top 10 Questions</a></li>
+            <li><a href="#">Is it safe?</a></li>
+            <li><a href="#">What's the procedure like?</a></li>
+            <li><a href="#">How much does it cost?</a></li>
+            <li><a href="#">What if I die?</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Sitemap</a> </li>
+        <li><a href="#">Job Opportunities</a></li>
+        <li><a href="#">Advertisement</a></li>
+      </ul>
+    </div>
+    <div id="fbox2">
+      <h2>Connect with us</h2>
+      <div class="share"> <a href="../../../www.facebook.com/default.htm" class="facebook">&nbsp;</a> <a href="../../../www.twitter.com/default.htm" class="twitter">&nbsp;</a> <a href="#" class="skype">&nbsp;</a> <a href="#" class="in">&nbsp;</a> <a href="#" class="email">&nbsp;</a> </div>
+      <form name="signup" method="post" action="">
+        <div class="newsletter">
+          <h2>Join our newsletter</h2>
+          <input name="" type="text" value="Enter you Emails" />
+          <input name="" type="submit" />
+          <a href="#">Click here to unsubscribe</a> </div>
+      </form>
+    </div>
+    <div id="fbox3"> <img src="images/footer-pic.png" width="92" height="214" alt="" /> <span>PowerHouse Corporation<br />
+      1534 Hi Street, Santa Felicia, CA 90563</span> </div>
+  </div>
+  <div id="copyrights">
+    <div>&copy; Copyright 2012 PowerHouse Corporation, All Rights Reserved</div>
+  </div>
+</div>
+
+</body>
+</html>

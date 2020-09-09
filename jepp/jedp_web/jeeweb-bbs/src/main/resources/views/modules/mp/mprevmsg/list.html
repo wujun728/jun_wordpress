@@ -1,0 +1,31 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@include file="/WEB-INF/webpage/common/taglibs.jspf"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>接收消息列表</title>
+  <meta name="decorator" content="list"/>
+</head>
+<body title="接收消息">
+<#grid:grid id="mpRevmsgGrid" url="${adminPath}/mp/mprevmsg/ajaxList">
+	<#grid:column label="sys.common.key" hidden="true"   name="id" width="100"/>
+	<#grid:column label="sys.common.opt"  name="opt" formatter="button" width="100"/>
+	<#grid:button groupname="opt" function="delete" />
+    <#grid:column label="content"  name="content" />
+    <#grid:column label="create_time"  name="createTime" />
+    <#grid:column label="from_user"  name="fromUser" />
+    <#grid:column label="msg_id"  name="msgId" />
+    <#grid:column label="msg_type"  name="msgType" />
+    <#grid:column label="to_user"  name="toUser" />
+    <#grid:column label="openid"  name="openid" />
+    <#grid:column label="微信昵称"  name="nickname" />
+    <#grid:column label="账号ID"  name="acountId" />
+	<#grid:toolbar function="add"/>
+	<#grid:toolbar function="update"/>
+	<#grid:toolbar function="delete"/>
+	
+	<#grid:toolbar function="search"/>
+	<#grid:toolbar function="reset"/>
+</#grid:grid>
+</body>
+</html>

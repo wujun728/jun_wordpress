@@ -1,0 +1,70 @@
+<% layout('../layouts/layout.html', {
+title: '重置密码',
+page: 'user',
+isColumn: false,
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop">
+  <div class="fly-panel fly-panel-user" pad20>
+    <div class="layui-tab layui-tab-brief" lay-filter="user">
+      <ul class="layui-tab-title">
+        <li><a href="${ctx}/login">登入</a></li>
+        <li class="layui-this">重置密码</li>
+      </ul>
+      <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+        <div class="layui-tab-item layui-show">
+          <% if(showError == 0) {%>
+          <!-- 重置密码 -->
+          <div class="fly-msg">${user.realname}，请重置您的密码</div>
+          <div class="layui-form layui-form-pane"  style="margin-top: 30px;">
+            <form action="${ctx}/user/reset" method="post">
+              <div class="layui-form-item">
+                <label for="L_pass" class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                  <input type="password" id="L_pass" name="pass" required lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                  <input type="password" id="L_repass" name="repass" required lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label for="L_imagecode" class="layui-form-label">图形码</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_imagecode" name="imagecode" required="" lay-verify="required" autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid">
+                  <span style="color: #c00;"><img id="img_jcaptcha"  src="/jcaptcha.jpg" width="100" height="40" /></span>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <input type="hidden" name="token" value="${token}">
+                <button class="layui-btn" alert="1" lay-filter="*" lay-submit>提交</button>
+              </div>
+            </form>
+          </div>
+          <%} else {%>
+          <div class="fly-error" style="display: none;">该重置密码链接已失效，请重新校验您的信息</div>
+          <div class="fly-error">非法链接，请重新校验您的信息<a href="${ctx}/user/forget">找回密码？</a></div>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<% } %>
+
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

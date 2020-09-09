@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jeeweb.bbs.modules.example.mapper.ExampleMapper" >
+
+    <sql id="Base_Column_List" >
+        DISTINCT
+        e.id,
+        e.title,
+        e.link,
+        e.description,
+        e.cover,
+        e.report_uid as reportUid,
+        e.report_date as reportDate,
+        e.del_flag as delFlag,
+        (select count(p.id) from example_praise p WHERE e.id = p.example_id) as praiseCount,
+        <if test="userId != '' and userId != null">
+            (select count(p.id) from example_praise p WHERE p.example_id=  e.id and p.praise_uid=#{userId}) as praise,
+        </if>
+        u.id as "user.id",
+        u.realname as "user.realname",
+        u.username as "user.username",
+        u.portrait as "user.portrait",
+        u.email as "user.email",
+        u.phone as "user.phone",
+        u.vip_level as "user.vipLevel",
+        u.auth as "user.auth",
+        u.auth_info as "user.authInfo",
+        u.status as "user.status"
+    </sql>
+
+
+    <select id="selectExampleList" resultType="cn.jeeweb.bbs.modules.example.entity.Example">
+        select
+        <include refid="Base_Column_List" />
+        from example e
+        LEFT JOIN sys_user u on e.report_uid = u.id
+        <if test="ew.sqlSegment != '' and ew.sqlSegment != null">
+            <where>
+                ${ew.sqlSegment}
+            </where>
+        </if>
+    </select>
+
+</mapper>

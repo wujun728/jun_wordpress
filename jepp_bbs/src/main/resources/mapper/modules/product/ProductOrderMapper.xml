@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jeeweb.bbs.modules.product.mapper.ProductOrderMapper" >
+
+  <sql id="Base_Column_List" >
+    DISTINCT
+    po.id,
+    po.product_id as productId,
+    po.name,
+    po.create_date as createDate,
+    po.pay_date as payDate,
+    po.uid as uid,
+    po.close_time as closeTime,
+    po.order_status as orderStatus,
+    po.total_amount as totalAmount,
+    p.id as "product.id",
+    p.name as "product.name",
+    p.description as "product.description",
+    p.version as "product.version",
+    p.authorization_period as "product.authorizationPeriod",
+    p.total_amount as "product.totalAmount",
+    p.discount_amount as "product.discountAmount",
+    p.discount_description  as "product.discountDescription",
+    user.id as "user.id",
+    user.realname as "user.realname",
+    user.username as "user.username",
+    user.portrait as "user.portrait",
+    user.email as "user.email",
+    user.phone as "user.phone",
+    user.vip_level as "user.vipLevel",
+    user.auth as "user.auth",
+    user.auth_info as "user.authInfo",
+    user.status as "user.status"
+  </sql>
+
+  
+  <select id="selectProductOrderList" resultType="cn.jeeweb.bbs.modules.product.entity.ProductOrder">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM product_order po
+        LEFT JOIN product p on po.product_id = p.id
+        LEFT JOIN sys_user user on po.uid = user.id
+       <if test="ew.sqlSegment != '' and ew.sqlSegment != null">  
+		  <where>
+		    ${ew.sqlSegment} 
+		  </where>
+	   </if> 
+  </select>
+
+
+  <select id="selectIntervalProductOrderList" resultType="java.lang.String">
+    SELECT id FROM product_order
+    <where>
+      order_status = '1'
+      AND create_date <![CDATA[ <= ]]> now()- interval ${interval} minute
+    </where>
+  </select>
+
+</mapper>

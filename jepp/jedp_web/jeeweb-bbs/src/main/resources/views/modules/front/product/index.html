@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JeeWeb - 快速开发平台</title>
+    <meta name="keywords" content="JeeWeb SpringMVC Spring Hibernate">
+    <meta name="description" content="JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" href="${staticPath}/layui/css/layui.css">
+    <link rel="stylesheet" href="${staticPath}/css/index.css">
+    <link rel="stylesheet" href="${staticPath}/css/product.css">
+
+</head>
+<body>
+
+<div class="header">
+    <div class="layui-main">
+        <a class="logo" href="${ctx}/">
+            <img src="${staticPath}/images/logo-index.png" alt="layui">
+        </a>
+        <ul class="layui-nav">
+            <li class="layui-nav-item ">
+                <a href="/doc/">文档<!-- <span class="layui-badge-dot"></span> --></a>
+            </li>
+            <li class="layui-nav-item ">
+                <a href="${ctx}/example">案例<!-- <span class="layui-badge-dot"></span> --></a>
+            </li>
+            <li class="layui-nav-item ">
+                <a href="/demo/">示例<!-- <span class="layui-badge-dot"></span> --></a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs" style="display: none">
+                <a href="${ctx}/posts/extend/">扩展<span class="layui-badge-dot"></span></a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="${ctx}/posts/" target="_blank">社区</a>
+            </li>
+            <li class="layui-nav-item"  style="display: none">
+                <!--<span class="layui-badge-dot" style="margin: -4px 3px 0;"></span>-->
+                <a href="javascript:;">周边</a>
+                <dl class="layui-nav-child">
+
+                    <dd class="layui-hide-sm layui-show-xs"><a href="${ctx}/posts/extend/">扩展组件</a></dd>
+                    <dd class="layui-hide-sm layui-show-xs"><a href="${ctx}/posts/" target="_blank">社区交流</a><hr></dd>
+
+                    <dd><a href="//layim.layui.com/" target="_blank">即时聊天</a></dd>
+
+                    <hr>
+                    <dd><a href="/admin/" target="_blank">后台模板</a></dd>
+                    <dd><a href="/template/fly/" target="_blank">社区模板</a></dd>
+                    <dd><a href="/template/xianyan/" target="_blank">轻博客模板<span class="layui-badge-dot"></span></a></dd>
+
+                    <hr>
+                    <dd><a href="/alone.html" target="_blank">独立组件</a></dd>
+                    <dd><a href="${ctx}/posts/jie/24209/" target="_blank">Axure组件</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item layui-hide-xs" lay-unselect  style="display: none">
+                <a href="/admin/">后台模板<span class="layui-badge-dot"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="alone-banner">
+    <div class="layui-main">
+        <h1>layuiAdmin 后台管理模板</h1>
+        <p class="layui-hide-xs">完全由 layui 自建的一套前端架构实现而成的通用型后台管理模板系统</p>
+        <!--<p><span id="adminCountdown" style="display: inline-block; padding: 0 10px; line-height: 30px; border-radius: 2px; background-color: #c00;"></span></p>-->
+    </div>
+</div>
+
+<div class="alone-preview">
+
+    <p class="alone-download-btn">
+        <a href="//fly.layui.com/download/layuiAdmin/" target="_blank" class="layui-btn">
+            立即下载
+        </a>
+        <a href="#get" class="layui-btn layui-btn-primary alone-download-right">
+            获取授权
+        </a>
+    </p>
+
+</div>
+
+<a name="get"> </a>
+
+<div class="layui-main alone-items">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>选择</legend>
+    </fieldset>
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-md4 layui-col-sm6">
+            <div class="alone-version-desc layui-text">
+                <h2>单页版</h2>
+                <p>
+          <span class="alone-badge">
+            体验较好
+            <i class="layui-icon alone-tips" lay-tips="推荐有一定前端开发经验，且对项目性能有一定追求的使用">&#xe702;</i>
+          </span>
+                </p>
+
+                <ul>
+                    <li style="color: #FF5722;">单页面应用方案，所有操作无需跳转</li>
+                    <li style="color: #FF5722;">采用前后端分离开发模式，<strong>上手略难</strong></li>
+                    <li style="color: #FF5722;">更友好的交互体验，减轻浏览器负载</li>
+                    <li>始终基于全新的 layui 版本</li>
+                    <li>面向全屏幕尺寸的响应式适配能力</li>
+                    <li>灵活的主题色配置</li>
+                    <li>专属的开发者文档，助你快速掌握</li>
+                    <li>版本的持续更新，集大众之所需</li>
+                    <li>layui 社区 VIP 标识</li>
+                    <li>专属的会员专区，与同道中人隔空交流</li>
+                    <li>不限制域名和应用的项目数量</li>
+                </ul>
+                <div class="alone-buy layui-btn-container">
+                    <a href="pro/" target="_blank" class="layui-btn layui-btn-primary layui-hide-xs">
+                        查看演示
+                    </a>
+                    <a href="http://fly.layui.com/order/bill?itemid=4" target="_blank" class="layui-btn">选择授权</a>
+                    <i class="layui-icon alone-tips" lay-tips="您可以在里面选择【授权时长】，即：在有效时间内提供“下载或更新”的权限，并不影响 layuiAdmin 在你项目中的使用。比如你选择的是「一年授权」，那么一年后你仅仅只是无法从官网下载（更新） layuiAdmin。而「永久授权」则可以永久下载（更新）" style="margin-right: -60px; right: 50%; top: auto; bottom: 18px; color: #fff;">&#xe702;</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4 layui-col-sm6">
+            <div class="alone-version-desc layui-text">
+                <h2>iframe版</h2>
+                <p>
+          <span class="alone-badge">
+            使用简单
+            <i class="layui-icon alone-tips" lay-tips="推荐追求开发效率和缺乏前端开发经验的使用，后端开发者的最爱。">&#xe702;</i>
+          </span>
+                </p>
+                <i class="layui-badge" style="position: absolute; right: 30px; top: 30px;">hot</i>
+                <ul>
+                    <li style="color: #FF5722;">基于 iframe 标签页实现，<strong>简单实用</strong></li>
+                    <li style="color: #FF5722;">传统开发模式，撸起袖子直接开干</li>
+                    <li style="color: #FF5722;">交互体验相比“单页版”略有点欠缺</li>
+                    <li>始终基于全新的 layui 版本</li>
+                    <li>面向全屏幕尺寸的响应式适配能力</li>
+                    <li>灵活的主题色配置</li>
+                    <li>专属的开发者文档，助你快速掌握</li>
+                    <li>版本的持续更新，集大众之所需</li>
+                    <li>layui 社区 VIP 标识</li>
+                    <li>专属的会员专区，与同道中人隔空交流</li>
+                    <li>不限制域名和应用的项目数量</li>
+
+                </ul>
+                <div class="alone-buy layui-btn-container">
+                    <a href="std/dist/views/" target="_blank" class="layui-btn layui-btn-primary layui-hide-xs">
+                        查看演示
+                    </a>
+                    <a href="http://fly.layui.com/order/bill?itemid=6" target="_blank" class="layui-btn" style="position: relative;">
+                        选择授权
+                    </a>
+                    <i class="layui-icon alone-tips" lay-tips="您可以在里面选择【授权时长】，即：在有效时间内提供“下载或更新”的权限，并不影响 layuiAdmin 在你项目中的使用。比如你选择的是「一年授权」，那么一年后你仅仅只是无法从官网下载（更新） layuiAdmin。而「永久授权」则可以永久下载（更新）" style="margin-right: -60px; right: 50%; top: auto; bottom: 18px; color: #fff;">&#xe702;</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4 layui-col-sm12">
+            <div class="alone-version-desc layui-text">
+                <h2>套餐版</h2>
+                <p>
+          <span class="alone-badge">
+            单页版 + iframe版
+            <i class="layui-icon alone-tips" lay-tips="推荐追求项目开发效率，又有一定上进心的开发者选择，你将获益匪浅。">&#xe702;</i>
+          </span>
+                </p>
+
+                <ul>
+                    <li>同时拥有“<strong>单页版</strong>”和“<strong>iframe版</strong>”的授权</li>
+                    <li>不同项目自由选择，效率进阶两不误</li>
+                    <li><strong>永久套餐版</strong>可附赠 <a href="http://layim.layui.com/" target="_blank">LayIM</a> 专业开发版</li>
+                </ul>
+                <div class="alone-buy layui-btn-container">
+                    <a href="http://fly.layui.com/order/bill?itemid=9" target="_blank" class="layui-btn layui-btn-primary">
+                        一年授权
+                    </a>
+                    <a href="http://fly.layui.com/order/bill?itemid=10" target="_blank" class="layui-btn">
+                        永久授权
+                        <span class="layui-badge">推荐</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-sm12">
+            <blockquote class="layui-elem-quote layui-text">
+                <ul>
+                    <li>
+                        购买授权之前，建议认真阅读下述 <a href="#qa">“解惑”</a>，以免造成不必要的困惑。另外也可以阅读 <a href="http://fly.layui.com/jie/26280/" target="_blank">《layui 付费产品服务条款》</a>
+                        <!--如有其它疑问，也可以添加 layui 客服微信咨询：<a href="//cdn.layui.com/upload/2018_3/168_1521968603171_77146.jpg" target="_blank">layui-kf</a>-->
+                    </li>
+                </ul>
+                <p style="margin-top: 10px; ">
+                    <span style="color: #FF5722;">注意</span>：layuiAdmin 受国家计算机软件著作权保护（登记号：<a href="http://cdn.layui.com/images/layuiAdmin-show.jpg" target="_blank">2018SR410669</a>），不得恶意分享产品源代码、二次转售等，违者必究。
+                </p>
+            </blockquote>
+        </div>
+
+    </div>
+</div>
+
+<a name="qa"> </a>
+
+<div class="layui-main alone-items">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>解惑</legend>
+    </fieldset>
+    <dl class="layui-text qa-main">
+        <dt>应该如何选择版本？</dt>
+        <dd>
+            通常我们推荐您选择<em>“套餐版”</em>，它同时包含了<em>“单页版”</em>和<em>“iframe版“</em>”，你随时可根据项目需求和团队情况，自由切换。但如果你只想从<em>“单页版”</em>和<em>“iframe版“</em>授权其中一个，那么我们需要进一步解释的是：
+            <ul>
+                <li>所谓<em>“单页版”</em>，即 SPA（单页面应用系统）开发模式，也就是所有的页面动作都是在一个宿主页面中完成，通常用于前后端分离。其中视图层全权由前端把控，数据一律走 Ajax 异步请求。layuiAdmin 内部实现了一套基于 location.hash 的路由和模板机制，这使得你可以很轻松地实现界面的跳转与渲染。另外注意的是，接口鉴权不再适用于传统的 session 模式，一般需要采用 JWT。总体来说，刚开始使用会相对有些复杂，但使用习惯后，项目会更易维护。</li>
+                <li>所谓<em>“iframe版”</em>，即基于 iframe 容器跳转的多页面开发模式，视图层通常由服务端输出，每一个页面都在一个完全独立的空间中运行，因此一般适用于规模相对庞大的应用系统，它可以避免不同界面之间的冲突，但如果打开的 iframe 元素过多，浏览器负荷会相对较高。</li>
+            </ul>
+            一般对于大多数服务端程序员来说，<em>“iframe版”</em> 的上手难度要远低于<em>“单页版”</em>。
+        </dd>
+
+        <dt>授权「一年」和「永久」有什么区别？</dt>
+        <dd>授权时长只是限制在有效时间内提供“下载或更新”的权限，并不影响 layuiAdmin 在你项目中的实际使用。比如你选择的是「一年授权」，那么一年后你将无法从官网下载/更新 layuiAdmin，而「永久授权」则可以永久下载/更新。</dd>
+
+        <dt>如果选择了一年授权，如何升级为永久？</dt>
+        <dd>从授权日开始，三个月内随时可补差价升级为永久。目前尚不支持自动操作，只能我们在后台为您升级。具体操作可联系邮箱：xianxin@layui-inc.com</dd>
+
+        <dt>在哪里可以看到价格？</dt>
+        <dd>在上述任意版本介绍中点击“选择授权”，即可跳转到授权页面，系统会提示你登入 layui 社区账号，登入后可看到每个版本的价格。</dd>
+
+        <dt>如果选择错了版本，是否支持更换？</dt>
+        <dd><em>“单页版”</em>和<em>“iframe版“</em> 之间不支持更换，只能补差价升级为<em>“套餐版”</em>，具体操作可联系邮箱：xianxin@layui-inc.com</dd>
+
+        <dt>授权后将享受怎样的服务？</dt>
+        <dd>layuiAdmin 的受众广泛主要得益于 layui 庞大的用户基础和工匠精神的开发团队，你除了将得到 layuiAdmin 的源代码之外，还有权限进入会员专区，任何技术问题都可以在里面发帖，我们有专门的技术人员在第一时间为你解答。如果您授权的的是永久<em>“套餐版”</em>，我们还会邀请您加入会员群。</dd>
+
+        <dt>使用 layuiAdmin 有什么限制？</dt>
+        <dd>layuiAdmin 不遵循任何开源许可证，它基于我们自身拟定的 LPPL 条款，详见：<a href="http://fly.layui.com/jie/26280/" target="_blank">《layui 付费产品服务条款》</a></dd>
+    </dl>
+    <div style="text-align: center;">
+        <a class="layui-btn" href="#get">已了解妥当，前往授权</a>
+    </div>
+</div>
+
+<a name="demo"> </a>
+
+<div class="layui-main alone-items layui-hide-xs">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>体验</legend>
+    </fieldset>
+</div>
+
+<div class="alone-preview layui-hide-xs">
+    <div class="alone-preview-title">
+        <span class="layui-show">iframe 版</cite></span>
+        <span>单页版</cite></span>
+        <span>手机预览</cite></span>
+    </div>
+    <div class="layui-main">
+        <div class="layui-carousel" id="LAY_preview" lay-filter="preview">
+            <div carousel-item>
+                <div>
+                    <a href="std/dist/views/" target="_blank">
+                        <img src="//cdn.layui.com/upload/2018_5/168_1527689303593_64334.png" alt="iframe 版">
+                    </a>
+                </div>
+                <div>
+                    <a href="pro/" target="_blank">
+                        <img src="//cdn.layui.com/upload/2018_5/168_1527689318747_88659.png" alt="单页版">
+                    </a>
+                </div>
+                <div>
+                    <a href="javascript:;" data-type="mobile-demo" class="layuiadmin-active">
+                        <img src="//cdn.layui.com/upload/2018_5/168_1527690320778_88701.png" alt="手机预览">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-footer footer footer-index">
+    <div class="layui-main">
+        <p>&copy; 2018 <a href="http://www.layui.com/">layui.com</a> 版权所有</p>
+        <p>
+            官方倾情出品
+        </p>
+    </div>
+</div>
+
+
+<script src="${staticPath}/layui/layui.js"></script>
+<script src="${staticPath}/js/homepage.js"></script>
+</body>
+</html>

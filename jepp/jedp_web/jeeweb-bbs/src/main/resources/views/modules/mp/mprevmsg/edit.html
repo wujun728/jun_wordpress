@@ -1,0 +1,104 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/WEB-INF/webpage/common/taglibs.jspf"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>接收消息</title>
+    <meta name="decorator" content="form"/>
+    <#html:css name="bootstrap-fileinput" />
+    <#html:css name="simditor" />
+</head>
+
+<body class="white-bg"  formid="mpRevmsgForm">
+    <#form:form id="mpRevmsgForm" modelAttribute="data" method="post" class="form-horizontal">
+		<#form:hidden path="id"/>
+		<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		   <tbody>
+				<tr>
+					<td  class="width-15 active text-right">	
+		              <label><font color="red">*</font>id:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="id" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+					<td  class="width-15 active text-right">	
+		              <label>content:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="content" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+				</tr>
+				<tr>
+					<td  class="width-15 active text-right">	
+		              <label>create_time:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="createTime" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+					<td  class="width-15 active text-right">	
+		              <label>from_user:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="fromUser" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+				</tr>
+				<tr>
+					<td  class="width-15 active text-right">	
+		              <label>msg_id:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="msgId" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+					<td  class="width-15 active text-right">	
+		              <label>msg_type:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="msgType" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+				</tr>
+				<tr>
+					<td  class="width-15 active text-right">	
+		              <label>to_user:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="toUser" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+					<td  class="width-15 active text-right">	
+		              <label>openid:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="openid" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+				</tr>
+				<tr>
+					<td  class="width-15 active text-right">	
+		              <label>微信昵称:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="nickname" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+					<td  class="width-15 active text-right">	
+		              <label>账号ID:</label>
+		            </td>
+					<td class="width-35">
+						<#form:input path="acountId" htmlEscape="false" class="form-control"      />
+						<label class="Validform_checktip"></label>
+					</td>
+				</tr>
+		      
+		   </tbody>
+		</table>   
+	</#form:form>
+<#html:js name="bootstrap-fileinput" />
+<#html:js name="simditor" />
+</body>
+</html>

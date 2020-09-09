@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>主页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/easySlider1.5.js"></script>
+<script type="text/javascript" charset="utf-8">
+// <![CDATA[
+$(document).ready(function(){	
+	$("#slider").easySlider({
+		controlsBefore:	'<p id="controls">',
+		controlsAfter:	'</p>',
+		auto: true, 
+		continuous: true
+	});	
+});
+// ]]>
+</script>
+<style type="text/css">
+#slider { margin:0 auto; padding:0; list-style:none; width:920px; }
+#slider ul,
+#slider li { margin:0; padding:0; list-style:none; }
+/* 
+    define width and height of list item (slide)
+    entire slider area will adjust according to the parameters provided here
+*/
+#slider li { width:920px; overflow:hidden; padding:0; margin:0 auto; }
+p#controls { margin:0; position:relative; }
+#prevBtn,
+#nextBtn { display:block; margin:0; overflow:hidden; width:15px; height:30px; position:absolute; left:5px; top:-135px; }
+#nextBtn { left:952px; }
+#prevBtn a { display:block; width:15px; height:30px; background:url(images/l_arrow.gif) no-repeat 0 0; }
+#nextBtn a { display:block; width:15px; height:30px; background:url(images/r_arrow.gif) no-repeat 0 0; }
+</style>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="block_header">
+      <div class="search">
+          <form id="form1" name="form1" method="post" action="">
+            <label>
+              <input name="q" type="text" class="keywords" id="textfield" maxlength="50" value="Search..." />
+              <input name="b" type="image" src="images/search.gif" class="button" />
+            </label>
+          </form>
+      </div>
+    <div class="header_text"><a href="http://www.wozaixianshang.com/">官方微博</a> | <a href="http://blog.wozaixianshang.com/">博客</a></div>
+    <div class="clr"></div>
+   <div class="block_header_form">
+      <div class="logo"><a href="index.html"><img src="images/logo.gif" width="165" height="69" border="0" alt="logo" /></a></div>
+      <div style="float:right;">
+        <div class="menu">
+          <ul>
+            <li><a href="index.html" class="active"><span>主页</span></a></li>
+             <li><a href="services.html"><span>服务</span></a></li>                       
+            <li><a href="projects.html"><span>案例</span></a></li>
+            <li><a href="about.html"><span>关于我们</span></a></li>
+            <li><a href="contact.html"><span>联系我们</span></a></li>
+          </ul>
+        </div>
+        </div>
+        <div class="clr"></div>
+      </div>
+      <div class="slider">
+        <div class="slice1">
+          <div class="slice2" id="slider">
+            <ul>
+              <li>
+                <div>
+                  <p class="img"><img src="images/simple_text_img_1.jpg" alt="screen 1" width="404" height="271" /></p>
+                  <h2>我们创造最美丽网页！</h2>
+                  <p>品牌网页设计 品牌网站建设，基于互联网的品牌行销策略的策划与执行。品牌形象挖掘、梳理、包装、表现与传播。辅助顾客实现品牌战略目标的互联网解决方案。</p>
+                  <p>&nbsp;</p>
+                  <p><a href="google.com"><img src="images/View_serv.gif" width="142" height="30" border="0" alt="view" /></a> <a href="google.com"><img src="images/What_we_do.gif" width="142" height="30" border="0" alt="view" /></a></p>
+                   
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="img"><img src="images/simple_text_img_2.jpg" alt="screen 1" width="404" height="271" /></p>
+                  <h2>互联网时代的整合营销！</h2>
+                  <p>基于互联网的品牌营销策略的定制与执行。品牌形象挖掘、梳理、包装、表现与传播。坐拥着最为丰富的行业经验与优势资源。</p>
+                  <p>&nbsp;</p>
+                  <p><a href="google.com"><img src="images/View_serv.gif" width="142" height="30" border="0" alt="view" /></a> <a href="google.com"><img src="images/What_we_do.gif" width="142" height="30" border="0" alt="view" /></a></p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="img"><img src="images/simple_text_img_3.jpg" alt="screen 1" width="404" height="271" /></p>
+                  <h2>Web应用(B/S)定制开发</h2>
+                  <p>自主研发、完善的开发框架。详细的需求调研及解决方案。实施项目经验丰富的项目团队。 </p>
+                  <p>&nbsp;</p>
+                  <p><a href="google.com"><img src="images/View_serv.gif" width="142" height="30" border="0" alt="view" /></a> <a href="google.com"><img src="images/What_we_do.gif" width="142" height="30" border="0" alt="view" /></a></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+             </div>
+      <div class="clr"></div>
+      
+    </div>
+  </div>
+    <div class="body">
+    <div class="body_resize">
+    <div class="left">
+    <h2>关于我们</h2>
+    <p><span>加设计是加设计艺术工作室倾力打造的一个以网页模板，网页主题为核心的商务平台。我们有着经验丰富，而且成熟的团队，我们专注于开发视觉精美，功能完善的原创中文网站主题和网站模板。</span></p>
+    <p>禁止拙劣的设计；禁止平庸的想法，这是我们严于律己的标准 。这个逆向思维的概念，时刻的提醒着我们，我们是拒绝拙劣平庸，拒绝敷衍，一定要用最好的想法和最用心的作风来证明我们的座右铭—-禁止拙劣！禁止平庸！
+工作室在这些年的不断发展中，积累了大量的视觉设计、程序开发、用户体验等一系列为企业客户服务的经验，坐到以客户为中心，做出符合客户需求的服务和产品。客户包括日本、北美、欧洲、澳大利亚等海外地区，并受到这些客户的肯定和鼓励。我们会再接再厉，不断成长，为您做出更好的更贴心的产品和服务。</p>
+    <p>&nbsp;</p>
+    <h2>提供服务</h2>
+    <p><span>我们从事定制服务已经有多年历史了——从粗糙设计到艺术设计 </span></p>
+    <p>我们这个以平面设计师和插画师所组成的艺术团体，在这些年在一起不断发展和进步，先后为大量的客户做出符合他们需求的定制服务，这些服务包括：网页设计，VI设计，插图绘制，漫画绘制，漫画说明书，网站开发等等，服务过的客户包括日本、北美、欧洲、澳大利亚等海外地区，并受到这些客户的肯定和鼓励。</p>
+    <img src="images/img_1.jpg" width="77" height="77" alt="img" />
+    <p><strong>网站开发</strong><br />
+网页设计和网站开发的相关服务和报价参考
+网页设计主题：首页1200起，二级页面2500起，三级页面3500起，整站报价可参考企业网站价格
+主题定制 个人博客 1999元 起 企业网站 2500元 起
+模板主题网站 680元 起
+模板主题修改网站 1000元起 </p>
+    <p><a href="#" class="green">Read More</a></p>
+    <div class="bg"></div>
+    <img src="images/img_2.jpg" width="77" height="77" alt="img" />
+    <p><strong>平面设计</strong><br />
+我们还提供与企业相关的一些平面设计服务：LOGO设计 VI设计 网站焦点图设计 画册设计
+LOGO设计： 单logo：1000起
+VI设计： LOGO+A应用部分 : 3000起 B部分200/P
+网站焦点图设计：100/P起
+画册设计： 300/P</p>
+    <p><a href="#" class="green">Read More</a></p>
+    </div>
+    <div class="right">
+    <h2>新闻动态</h2>
+    <p class="green">5th / April / 2009</p>
+    <p>搜索引擎优化主要是指针对网站的关键字优化、网站外链接优化、关键字在网站内容里的密度优化等。为了使你的网站在搜索结果中有一个好的排名，一般需要搜索引擎优化即SEO。</p>
+    <div class="bg"></div>
+    <p class="green">5th / April / 2009</p>
+    <p>营销是全方面的发展是不断的改进不断的创新的，有着新的目标就有不断的追求，企业与网站的定制活动是营销中需要整理发布的咨询，互联网是需要更多的发布平台，稍微注意一下就会发现有很多都是可以发布更多的信息获取更多的价值的，网站建设也是一样的。</p>
+    <div class="bg"></div>
+    <p><a href="#" class="grey">more news</a></p>
+    <p>&nbsp;</p>
+    <h2>联系我们</h2>
+    <p>欢迎您通过以下方式联系我们 </p>
+    <p class="grey"><strong>电话：</strong> +123456789<br />
+      <strong>传真：</strong> +123456789<br />
+      <strong>邮箱：</strong> company@domainname.com </p>
+    <p class="grey">&nbsp;</p>
+    <img src="images/twitter.jpg" width="82" height="49" alt="img" />
+    <p>官方微博</p><p class="blye"> weibo.com/547767315</p>
+    </div>
+      <div class="clr"></div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+    <div class="footer">
+    <div class="footer_resize">
+      <p class="leftt">Copyright © wozaixianshang.com. All Rights Reserved<br />
+        <a href="inedx.html">主页</a> | <a href="#">联系我们</a> | <a href="#">RSS </a></p>
+      <p class="rightt">Design by <a href="http://wozaixianshang.com/">wozaixianshang.com</a></p>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+</body>
+</html>

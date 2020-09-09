@@ -1,0 +1,39 @@
+<div class="fly-footer">
+  <p><a href="http://www.jeeweb.cn/" target="_blank">JeeWeb社区</a> 2018 &copy; <a href="http://www.jeeweb.cn/" target="_blank">jeeweb.cn 出品</a></p>
+  <p>
+    <a href="http://www.layui.com/" target="_blank">layui</a>
+    <a href="http://ibeetl.com/" target="_blank">Beetl</a>
+    <a href="http://mp.baomidou.com/" target="_blank">MyBatis-Plus</a>
+  </p>
+</div>
+
+<script src="${staticPath}/layui/layui.js"></script>
+<script>
+    layui.cache.page = '${page}';
+    <% if(!has(loginUser)){%>
+    layui.cache.user = {
+        username: '游客'
+        ,uid: -1
+        ,avatar: '../../res/images/avatar/00.jpg'
+        ,experience: 83
+        ,sex: '男'
+    };
+    <%}else{%>
+    layui.cache.user = {
+      username: '${loginUser.realname}'
+      ,uid: '${loginUser.id}'
+      ,avatar: '${loginUser.portrait}'
+      ,experience: ${loginUser.experience}
+      ,sex: '${loginUser.sex}'
+    };
+    <%}%>
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?efb9a8c5d5e8c9815698fe1520817116";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>

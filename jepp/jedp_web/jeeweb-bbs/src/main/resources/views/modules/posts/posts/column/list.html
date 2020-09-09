@@ -1,0 +1,18 @@
+<% layout('/layouts/list.html', {title: '主题栏目'}){ %>
+<#grid:grid id="roleGrid" url="${adminPath}/posts/posts/column/ajaxList">
+    <#grid:column label="sys.common.key" hidden="true"   name="id" width="100"/>
+    <#grid:column label="sys.common.opt"  name="opt" formatter="button" width="100"/>
+    <#grid:button   groupname="opt" function="delete" />
+    <#grid:column label="名称"  name="name"  query="true"  />
+    <#grid:column label="别名"  name="alias"  query="true"  />
+    <#grid:column label="编码"  name="code" />
+    <#grid:column label="排序"  name="sort" />
+
+    <#grid:toolbar function="add"/>
+    <#grid:toolbar   function="update"/>
+    <#grid:toolbar   function="delete"/>
+
+    <#grid:toolbar  function="search"/>
+    <#grid:toolbar  function="reset"/>
+</#grid:grid>
+<% } %>

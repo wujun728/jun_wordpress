@@ -1,0 +1,127 @@
+<%
+var title = '';
+if(data.id==null) {
+  title = '发表新帖';
+}else{
+  title = '编辑帖子';
+}
+layout('../layouts/layout.html', {
+title: title,
+page: 'jie',
+keywords: 'JeeWeb SpringMVC Spring Hibernate',
+description: 'JeeWeb是一款基于SpringMVC+Spring+Hibernate的敏捷开发系统；它是一款具有代码生成功能的智能快速开发平台；是以Spring Framework为核心容器，Spring MVC为模型视图控制器，Hibernate为数据访问层， Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Disruptor作为并发框架，Bootstrap作为前端框架的优秀 开源 系统。'
+}){ %>
+<div class="layui-container fly-marginTop">
+  <div class="fly-panel" pad20 style="padding-top: 5px;">
+    <!--<div class="fly-none">没有权限</div>-->
+    <div class="layui-form layui-form-pane">
+      <div class="layui-tab layui-tab-brief" lay-filter="user">
+        <ul class="layui-tab-title">
+          <li class="layui-this"><% if(data.id==null) {%>发表新帖<%}else{%>编辑帖子<%}%></li>
+        </ul>
+        <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+            <#form:form id="postsForm" modelAttribute="data"  method="post">
+              <#form:hidden path="id"/>
+              <div class="layui-row layui-col-space15 layui-form-item">
+                <% if(data.id==null) {%>
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">所在专栏</label>
+                  <div class="layui-input-block">
+                    <%
+                    var postsColumnList = postsUtils.getPostsColumnList();
+                    %>
+                    <select lay-verify="required" name="column" lay-filter="column">
+                      <option></option>
+                      <%for(postsColumn in postsColumnList){
+                        if(postsColumn.auth=='0'||(postsColumn.auth=='1'&&shiro.hasRole('admin'))){
+                      %>
+                        <option value="${postsColumn.code}" <%if(postsColumn.code==data.column){%> selected = "selected"<%}%>>${postsColumn.name}</option>
+                      <%}}%>
+                    </select>
+                  </div>
+                </div>
+                <%}%>
+                <div class="layui-col-md9">
+                  <label for="L_title" class="layui-form-label">标题</label>
+                  <div class="layui-input-block">
+                    <#form:input  id="L_title"  path="title" required="true" lay-verify-strikethrough="required"  autocomplete="off" class="layui-input"/>
+                    <!-- <input type="hidden" name="id" value="{{d.edit.id}}"> -->
+                  </div>
+                </div>
+              </div>
+              <div class="layui-row layui-col-space15 layui-form-item <% if(data.column != '0' || data.column! == ''){ %> layui-hide<%}%>" id="LAY_quiz">
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">所属产品</label>
+                  <div class="layui-input-block">
+                    <#form:select path="project">
+                      <option></option>
+                      <#form:options dict="projecttype"/>
+                    </#form:select>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label class="layui-form-label" for="L_version">版本号</label>
+                  <div class="layui-input-block">
+                    <#form:input  id="L_version"  path="version" autocomplete="off" class="layui-input"/>
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <label class="layui-form-label" for="L_browser">浏览器</label>
+                  <div class="layui-input-block">
+                    <#form:input  id="L_browser"  path="browser"  autocomplete="off" class="layui-input"/>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block">
+                  <#form:textarea  id="L_content"  path="content" required="true"  lay-verify-strikethrough="required"  placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"/>
+                </div>
+              </div>
+              <% if(data.id==null) {%>
+              <div class="layui-form-item layui-hide" id="LAY_PAY">
+                <div class="layui-inline">
+                  <label class="layui-form-label">悬赏飞吻</label>
+                  <div class="layui-input-inline" style="width: 190px;">
+                    <#form:select path="experience">
+                      <#form:option value="20">20</#form:option>
+                      <#form:option value="30">30</#form:option>
+                      <#form:option value="40">40</#form:option>
+                      <#form:option value="50">50</#form:option>
+                      <#form:option value="60">60</#form:option>
+                      <#form:option value="70">70</#form:option>
+                      <#form:option value="80">80</#form:option>
+                    </#form:select>
+                  </div>
+                  <div class="layui-form-mid layui-word-aux">发表后无法更改飞吻</div>
+                </div>
+              </div>
+              <%}%>
+              <div class="layui-form-item">
+                <label for="L_vercode" class="layui-form-label">图形码</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_vercode" name="vercode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">
+                  <span style="color: #c00;"><img id="img_jcaptcha"  src="/jcaptcha.jpg" width="100" height="40"/></span>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
+              </div>
+            </#form:form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+<script>
+    layui.config({
+        version: "3.0.0"
+        ,base: '${staticPath}/mods/'  //这里实际使用时，建议改成绝对路径
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>

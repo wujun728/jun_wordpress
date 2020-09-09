@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+
+#navigation li ul {
+		margin-left:-140px;
+	
+}
+.tab_right_side {
+	margin-top:-294px;
+	
+}
+#top_header .search input[type="text"] {
+
+	padding: 8px 0 8px 5px;
+	height:17px;
+	
+}
+#extra_slider h1 {
+	position:relative;
+
+}
+ol.bjqs_1-markers {
+    float: left;
+    margin-left: 400px;
+    margin-top: -16px;
+	width:500px;
+}
+
+#project_84 h1 {
+    color: #BFC2C7;
+    float: left;
+    font-family: 'existence_lightregular';
+    font-size: 35px;
+    line-height: 24px;
+    width: 700px;
+}
+#contact_address{
+	float:left;
+	width:100%;
+	margin-top:25px;
+	margin-bottom:100px;
+	height:500px;
+	}
+#logo_nav .bg_111 {
+	float:left;
+	width:100%;
+	background-image:url(../images/blog_bg.png);
+	background-position:center top;
+	background-repeat:no-repeat;
+	position:relative;
+	z-index:100;
+	height:251px;
+}
+
+#service_details .service_details {
+    min-height: 430px;
+}

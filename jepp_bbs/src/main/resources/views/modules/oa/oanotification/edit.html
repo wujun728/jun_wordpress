@@ -1,0 +1,37 @@
+<% layout('/layouts/form.html', {title: '通知公告', formId: 'oaNotificationForm', bodyClass: 'white-bg', libs: 'bootstrap-fileinput,simditor'}){ %>
+<#form:form id="oaNotificationForm" modelAttribute="data"   method="post" class="form-horizontal">
+	<#form:hidden path="id"/>
+	<table  class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+		<tbody>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>标题:</label>
+			</td>
+			<td class="width-35">
+				<#form:input path="title" htmlEscape="false" class="form-control"  datatype="*"    />
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>内容:</label>
+			</td>
+			<td class="width-35">
+				<#form:textarea path="content" rows="4" htmlEscape="false" class="form-control"  datatype="*"    />
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+		<tr>
+			<td  class="width-15 active text-right">
+				<label><font color="red">*</font>是否发布:</label>
+			</td>
+			<td class="width-35">
+				<#form:radiobuttons path="status" htmlEscape="false" class="form-control"  dict="sf"  datatype="*"  cssClass="i-checks required"   />
+				<label class="Validform_checktip"></label>
+			</td>
+		</tr>
+
+		</tbody>
+	</table>
+</#form:form>
+<% } %>
